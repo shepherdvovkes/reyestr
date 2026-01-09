@@ -1,0 +1,1482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="uk"><head>
+    <title>Єдиний державний реєстр судових рішень</title>
+    <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css">
+    <script src="/Scripts/all.min.js" type="text/javascript"></script>
+    <script src="/Scripts/Common.js?1" type="text/javascript"></script>
+    <script src="/Scripts/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.multiSelect.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        #modalcaptcha {
+            background-color: #F5F5F5;
+            border: 2px solid buttonshadow;
+            border-radius: 15px 15px 15px 15px;
+            font-family: "Times New Roman";
+            font-size: 15px;
+            margin: 0;
+            padding: 20px;
+            position: absolute;
+            z-index: 1;
+            display: inline;
+            left: 461.5px;
+            top: 192px;
+        }
+
+            #modalcaptcha button {
+                background-color: #F0F0F0;
+                border: 1px solid #AAAAAA;
+                border-radius: 12px 12px 12px 12px;
+                color: #393939;
+                font-size: 100%;
+                font-weight: bold;
+                height: 30px;
+                margin: 0 0 0 10px;
+                width: 150px;
+            }
+
+            #modalcaptcha .disabled {
+                color: #ddd;
+            }
+    </style>
+
+</head>
+<body style="visibility: visible;">
+    <div class="page">
+        <div id="content">
+            <div id="header">
+                <h1>Єдиний державний реєстр судових рішень</h1>
+                
+                <div class="warningblock">
+                <h4 class="warningtext">Доступ до Реєстру здійснюється в тестовому (обмеженому) режимі. Для запобігання загрозам життю і здоров'ю суддів та учасників судового процесу, а також у разі виявлення ознак кіберзагрози, доступ до Реєстру або окремих рішень у ньому може бути обмежено.</h4>
+                </div>
+                <div id="logon" class="notVisible">
+                    
+                    Ласкаво просимо, !
+                </div>
+
+                <div id="menucontainer">
+                    <table id="menu" cellpadding="0" cellspacing="0" style="text-align:center;">
+                        <tbody><tr>
+                            <td style="width: 69px; padding-left: 25px; vertical-align: middle;" class="staticTD">
+                                <img src="/Content/Images/trident2.PNG" title="Державний герб України" alt="Державний герб України" style="display: block">
+                            </td>
+                            <td style="width: 89px">
+                                <a href="/" id="aSearch" name="aSearch">Головна</a>
+                            </td>
+                            <td style="width: 137px">
+                                <a href="/Law" id="aLaw" name="aLaw">Законодавство</a>
+                            </td>
+                            <td style="width: 96px">
+                                <a href="/Contacts" id="aContacts" name="aContacts">Контакти</a>
+                            </td>
+                            <td style="width: 91px">
+                                <a href="/Rules" id="aRules" name="aRules">Правила</a>
+                            </td>
+                            <td style="width: 100px">
+                                <a href="/Help" id="aHelp" name="aHelp">Допомога</a>
+                            </td>
+                            <td style="width: 200px">
+                                <a href="/ChangedNameCourts">Змінені назви судів</a>
+                            </td>
+                            <td style="width: 220px" class="staticTD">
+                            </td>
+                            
+                            <td style="width: 150px">
+
+<a href="/login" id="aLogin" name="aLogin">Повний доступ</a>                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+            <div id="login">
+                
+<link href="/Content/multiselect/jquery.multiSelect.css" rel="stylesheet" type="text/css">
+<link href="/Content/datepicker/jquery.datepick.css" rel="stylesheet" type="text/css">
+
+
+<form action="/" method="post">    <div style="display: none;">
+        <img id="calImg" src="/Content/Images/calendar.png" alt="Calendar">
+    </div>
+    <div id="divsearch">
+        <table id="tablesearch">
+            <tbody><tr>
+                <td id="tdHeaderSearch" class="tdHeaderSearch">
+                    <b>Пошук за контекстом</b>
+                    <br>
+                    <input class="searchtxt" id="SearchExpression" name="SearchExpression" type="text" value="" style="width: 952px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <div class="divLeftSearch">
+                <div class="intoLeftSearch">
+                <!--td id="tdLeftSearch" class="tdLeftSearch"-->
+                    <div id="myFieldSet_1" class="myFieldSet">
+                        <div class="myLegend">
+                            <a>Суд та судді</a></div>
+                        <table class="tableCourt_1">
+                            <tbody><tr>
+                                <td class="tdLeft">
+                                    Регіон&nbsp;суду
+                                </td>
+                                <td id="tdForWidth_1">
+                                    <a href="javascript:;" class="multiSelect" id="CourtRegion" title="Київська область" style="width: 324px;"><span class="inActive" style="width: 179px;">Київська область</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; height: 150px; width: 344px;"><label><input type="checkbox" name="CourtRegion[]" value="2">Автономна Республіка Крим</label><label><input type="checkbox" name="CourtRegion[]" value="3">Вінницька область</label><label><input type="checkbox" name="CourtRegion[]" value="4">Волинська область</label><label><input type="checkbox" name="CourtRegion[]" value="5">Дніпропетровська область</label><label><input type="checkbox" name="CourtRegion[]" value="6">Донецька область</label><label><input type="checkbox" name="CourtRegion[]" value="7">Житомирська область</label><label><input type="checkbox" name="CourtRegion[]" value="8">Закарпатська область</label><label><input type="checkbox" name="CourtRegion[]" value="9">Запорізька область</label><label><input type="checkbox" name="CourtRegion[]" value="10">Івано-Франківська область</label><label class="checked"><input type="checkbox" name="CourtRegion[]" value="11" checked="checked">Київська область</label><label><input type="checkbox" name="CourtRegion[]" value="12">Кіровоградська область</label><label><input type="checkbox" name="CourtRegion[]" value="13">Луганська область</label><label><input type="checkbox" name="CourtRegion[]" value="14">Львівська область</label><label><input type="checkbox" name="CourtRegion[]" value="15">Миколаївська область</label><label><input type="checkbox" name="CourtRegion[]" value="16">Одеська область</label><label><input type="checkbox" name="CourtRegion[]" value="17">Полтавська область</label><label><input type="checkbox" name="CourtRegion[]" value="18">Рівненська область</label><label><input type="checkbox" name="CourtRegion[]" value="19">Сумська область</label><label><input type="checkbox" name="CourtRegion[]" value="20">Тернопільська область</label><label><input type="checkbox" name="CourtRegion[]" value="21">Харківська область</label><label><input type="checkbox" name="CourtRegion[]" value="22">Херсонська область</label><label><input type="checkbox" name="CourtRegion[]" value="23">Хмельницька область</label><label><input type="checkbox" name="CourtRegion[]" value="24">Черкаська область</label><label><input type="checkbox" name="CourtRegion[]" value="25">Чернівецька область</label><label><input type="checkbox" name="CourtRegion[]" value="26">Чернігівська область</label><label><input type="checkbox" name="CourtRegion[]" value="27">м. Київ</label><label><input type="checkbox" name="CourtRegion[]" value="28">м. Севастополь</label><label><input type="checkbox" name="CourtRegion[]" value="29">ВС Центральний регіон</label><label><input type="checkbox" name="CourtRegion[]" value="30">ВС Західний регіон</label><label><input type="checkbox" name="CourtRegion[]" value="31">ВС Південний регіон</label><label><input type="checkbox" name="CourtRegion[]" value="32">ВС ВМС України</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Найменування<br>
+                                    суду
+                                </td>
+                                <td>
+                                    <div class="divBefore" style="width: 21px; height: 21px;"><div style="height: 10.5px; width: 10.5px;"></div></div>
+                                    <a href="javascript:;" class="multiSelect" id="CourtName" title="Оберіть" style="width: 303px;"><span style="width: 346px;">Оберіть</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; height: 150px; width: 323px;"><label><input type="checkbox" name="CourtName[]" value="23">Іванківський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="24">Ірпінський міський суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="569">Апеляційний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="495">Білоцерківський міськрайонний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="493">Баришівський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="494">Березанський міський суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="496">Богуславський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="497">Бориспільський міськрайонний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="498">Бородянський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="499">Броварський міськрайонний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="500">Васильківський міськрайонний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="501">Вишгородський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="21">Володарський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="773">Господарський суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="22">Згурівський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="25">Кагарлицький районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="26">Києво-Святошинський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="792">Київський міжобласний апеляційний господарський суд</label><label><input type="checkbox" name="CourtName[]" value="39">Київський окружний адміністративний суд </label><label><input type="checkbox" name="CourtName[]" value="27">Макарівський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="28">Миронівський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="29">Обухівський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="30">Переяславський міськрайонний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="31">Ржищівський міський суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="568">Рокитнянський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="32">Сквирський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="33">Славутицький міський суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="34">Ставищенський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="35">Таращанський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="36">Тетіївський районний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="37">Фастівський міськрайонний суд Київської області</label><label><input type="checkbox" name="CourtName[]" value="38">Яготинський районний суд Київської області</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr style="display:none;">
+                                <td class="tdLeft">
+                                    Код&nbsp;суду
+                                </td>
+                                <td>
+                                    <input id="UserCourtCode" name="UserCourtCode" type="text" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Інстанція
+                                </td>
+                                <td>
+                                    <a href="javascript:;" class="multiSelect" id="INSType" title="Перша" style="width: 324px;"><span class="inActive" style="width: 75px;">Перша</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 344px;"><label class="checked"><input type="checkbox" name="INSType[]" value="1" checked="checked">Перша</label><label><input type="checkbox" name="INSType[]" value="2">Апеляційна</label><label><input type="checkbox" name="INSType[]" value="3">Касаційна</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    ПІБ&nbsp;судді
+                                </td>
+                                <td>
+                                    <input id="ChairmenName" name="ChairmenName" type="text" value="" style="width: 340px;">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div id="myFieldSet_0" style="display: block; height: 20px;">
+                    </div>
+                    <div id="myFieldSet_2" class="myFieldSet">
+                        <div class="myLegend">
+                            <a>Судове рішення</a></div>
+                        <table class="tableCourt_2">
+                            <tbody><tr>
+                                <td class="tdLeft">
+                                    Реєстраційний<br>
+                                    №&nbsp;рішення
+                                </td>
+                                <td id="tdForWidth_2">
+                                    <input id="RegNumber" name="RegNumber" type="text" value="" style="width: 321px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Період&nbsp;ухвалення<br>
+                                    (постановлення)
+                                </td>
+                                <td>
+                                    <div class="divLeftSearch">
+                                        з <input class="tbdates hasDatepick" id="RegDateBegin" name="RegDateBegin" type="text" value=""><img src="/Content/Images/calendar.png" alt="Calendar" class="datepick-trigger">
+                                    </div>
+                                    <div class="divRightSearch" style="text-align: right">
+                                        по <input class="tbdates hasDatepick" id="RegDateEnd" name="RegDateEnd" type="text" value=""><img src="/Content/Images/calendar.png" alt="Calendar" class="datepick-trigger">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Період<br>
+                                    надходження
+                                </td>
+                                <td>
+                                    <div class="divLeftSearch">
+                                        з <input class="tbdates hasDatepick" id="ImportDateBegin" name="ImportDateBegin" type="text" value=""><img src="/Content/Images/calendar.png" alt="Calendar" class="datepick-trigger">
+                                    </div>
+                                    <div class="divRightSearch" style="text-align: right">
+                                        по <input class="tbdates hasDatepick" id="ImportDateEnd" name="ImportDateEnd" type="text" value=""><img src="/Content/Images/calendar.png" alt="Calendar" class="datepick-trigger">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Форма&nbsp;судового<br>
+                                    рішення
+                                </td>
+                                <td>
+                                    <a href="javascript:;" class="multiSelect" id="VRType" title="Оберіть" style="width: 305px;"><span style="width: 123px;">Оберіть</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; height: 150px; width: 325px;"><label><input type="checkbox" name="VRType[]" value="1">Вирок</label><label><input type="checkbox" name="VRType[]" value="2">Постанова</label><label><input type="checkbox" name="VRType[]" value="3">Рішення</label><label><input type="checkbox" name="VRType[]" value="4">Судовий наказ</label><label><input type="checkbox" name="VRType[]" value="5">Ухвала</label><label><input type="checkbox" name="VRType[]" value="6">Окрема ухвала</label><label><input type="checkbox" name="VRType[]" value="10">Окрема думка</label><label><input type="checkbox" name="VRType[]" value="7">Додаткове рішення</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                <!--/td-->
+                </div>
+                </div>
+                <div class="divRightSearch">
+                <div class="intoRightSearch">
+                <!--td id="tdRightSearch" class="tdRightSearch"-->
+                    <div id="myFieldSet_3" class="myFieldSet" style="height: 389px;">
+                        <div class="myLegend">
+                            <a>Судова справа</a></div>
+                        <table class="tableCourt_3">
+                            <tbody><tr>
+                                <td class="tdLeft">
+                                    Форма<br>
+                                    судочинства
+                                </td>
+                                <td>
+                                    <a href="javascript:;" class="multiSelect" id="CSType" title="Оберіть" style="width: 306px;"><span style="width: 284px;">Оберіть</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 326px;"><label><input type="checkbox" name="CSType[]" value="4">Адміністративне</label><label><input type="checkbox" name="CSType[]" value="3">Господарське</label><label><input type="checkbox" name="CSType[]" value="2">Кримінальне</label><label><input type="checkbox" name="CSType[]" value="1">Цивільне</label><label><input type="checkbox" name="CSType[]" value="5">Справи про адміністративні правопорушення</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Категорія&nbsp;справи
+                                </td>
+                                <td>
+                                    <a href="javascript:;" class="multiSelect" id="CaseCat1" title="Оберіть" style="width: 306px;"><span style="width: 318px;">Оберіть</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; height: 150px; width: 326px;"><label><input type="checkbox" name="CaseCat1[]" value="3000">Адміністративні справи (до 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="40000">Адміністративні справи (з 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="4000">Господарські справи (до 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="40181">Господарські справи (з 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="2000">Кримінальні справи (до 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="40438">Кримінальні справи (з 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="41451">Окремі процесуальні питання</label><label><input type="checkbox" name="CaseCat1[]" value="5139">Справи про адмінправопорушення (до 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="40933">Справи про адмінправопорушення (з 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="1000">Цивільні справи (до 01.01.2019)</label><label><input type="checkbox" name="CaseCat1[]" value="40297">Цивільні справи (з 01.01.2019)</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    &nbsp;
+                                </td>
+                                <td id="tdForWidth_3">
+                                    <div class="divBefore" style="width: 21px; height: 21px;"><div style="height: 10.5px; width: 10.5px;"></div></div>
+                                    <a href="javascript:;" class="multiSelect disable" id="CaseCat2" title="Оберіть" style="width: 285px;"><span style="width: 2px;">&nbsp;</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 305px;"></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <div class="divBefore" style="width: 21px; height: 21px;"><div style="height: 10.5px; width: 10.5px;"></div></div>
+                                    <a href="javascript:;" class="multiSelect disable" id="CaseCat3" title="Оберіть" style="width: 285px;"><span style="width: 2px;">&nbsp;</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 305px;"></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <div class="divBefore" style="width: 21px; height: 21px;"><div style="height: 10.5px; width: 10.5px;"></div></div>
+                                    <a href="javascript:;" class="multiSelect disable" id="CaseCat4" title="Оберіть" style="width: 285px;"><span style="width: 2px;">&nbsp;</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 305px;"></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <div class="divBefore" style="width: 21px; height: 21px;"><div style="height: 10.5px; width: 10.5px;"></div></div>
+                                    <a href="javascript:;" class="multiSelect disable" id="CaseCat5" title="Оберіть" style="width: 285px;"><span style="width: 2px;">&nbsp;</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 305px;"></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <div class="divBefore" style="width: 21px; height: 21px;"><div style="height: 10.5px; width: 10.5px;"></div></div>
+                                    <a href="javascript:;" class="multiSelect disable" id="CaseCat6" title="Оберіть" style="width: 285px;"><span style="width: 2px;">&nbsp;</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 305px;"></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Справа&nbsp;№
+                                </td>
+                                <td>
+                                    <input id="CaseNumber" name="CaseNumber" type="text" value="" style="width: 322px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Статуси&nbsp;сторін<br>
+                                    судового&nbsp;процесу
+                                </td>
+                                <td>
+                                    <a href="javascript:;" class="multiSelect" id="SideStatus" title="Оберіть" style="width: 306px;"><span style="width: 341px;">Оберіть</span></a><div class="multiSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden; width: 326px;"><label><input type="checkbox" name="SideStatus[]" value="1">Фізична особа</label><label><input type="checkbox" name="SideStatus[]" value="2">Державний орган, підприємство, установа, організація</label><label><input type="checkbox" name="SideStatus[]" value="3">Юридична особа</label></div><div class="afterSelectOptions" style="position: absolute; z-index: 99999; visibility: hidden;"><table cellspacing="0"><tbody><tr><td class="tdOk">Прийняти</td><td class="tdCancel">Очистити</td></tr></tbody></table></div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                <!--/td-->
+                </div>
+                </div>
+                </td>
+            </tr>
+        </tbody></table>
+        <div id="divFooterSearch">
+            <table>
+                <tbody><tr>
+                    <td class="td1">
+                            <span>За заданими параметрами пошуку знайдено документів: 4736628</span>
+                    </td>
+                    <td class="td2">
+                        <input type="submit" value="Пошук" id="btn" class="btn">
+                        <input type="button" value="Очистити" id="btnclear" class="btnclear">
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>
+    <div id="divRecordsOnPage">
+    <table id="tableRecordsOnPage">
+        <tbody><tr>
+        <td id="tdBetaVersion">
+            <!--Після реконструкції працює бета-версія оновленого сайту. Зауваження просимо надсилати за <a id="aRemarks">адресою</a>-->
+    <table id="tableSortBy">
+    <tbody><tr>
+    <!--td id="tdFirstSortBy">&nbsp;</td-->
+    <td id="tdSecondSortBy">Сортування:</td>
+    <td id="tdThirdSortBy">
+    <select id="Sort" name="Sort"><option selected="selected" value="0">за релевантністю</option>
+<option value="1">за датою ухвалення рішення | за спаданням</option>
+<option value="2">за датою ухвалення рішення | за зростанням</option>
+</select>
+    </td>
+    </tr>
+    </tbody></table>
+        </td>
+        <td id="tdEmptyRecordsOnPage">&nbsp;</td>
+        <td id="tdTextRecordsOnPage">
+            Кількість записів на сторінці:
+        </td>
+        <td id="tdRecordsOnPage">
+        <select data-val="true" data-val-number="The field ItemsPerPage must be a number." data-val-required="The ItemsPerPage field is required." id="PagingInfo_ItemsPerPage" name="PagingInfo.ItemsPerPage"><option value="10">10</option>
+<option selected="selected" value="25">25</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select>
+        </td>
+        </tr>
+    </tbody></table>
+    </div>
+    <div id="divLiga">
+        <table id="tabledivLiga">
+            <tbody><tr>
+            <td id="tdRemarks1">
+        <table id="tableLiga" class="">
+            <tbody><tr>       
+                <td id="tdSecondLiga"><a id="aLiga" href="/Help#liga">Використовувати&nbsp;інформаційно−правову&nbsp;електронну&nbsp;базу</a>:</td>
+                <td id="tdThirdLiga">
+                    <select data-val="true" data-val-required="The Liga field is required." id="Liga" name="Liga"><option selected="selected" value="true">так</option>
+<option value="false">ні</option>
+</select>
+                </td>
+            </tr>
+        </tbody></table>
+            </td>
+            <td id="tdRemarks2">&nbsp;</td>
+            <td id="tdRemarks3"><a id="aRemarks">Відгуки про роботу сайту</a></td>
+            </tr>
+        </tbody></table>
+    </div>
+<div id="divProviderLinks">
+    <table id="tabledivPL">
+            <tbody><tr>
+            <td id="tdPLRemarks1">
+    <table id="tablePL">
+    <tbody><tr>
+    <td id="tdTitlePL">Постачальник посилань:</td>
+    <td id="tdPLList">
+    <select id="ProviderItem" name="ProviderItem"><option selected="selected" value="1">Ліга Закон</option>
+<option value="4">Закон Онлайн</option>
+</select>
+    </td>
+    </tr>
+    </tbody></table>
+            </td>
+            <td id="tdPLRemarks2">&nbsp;</td>
+            <td id="tdPLRemarks3">&nbsp;</td>
+            </tr>
+     </tbody></table>
+</div>
+</form>
+<a id="aInfo" style="display: none">Id = 639035126458882708, MaxWorkingQueries = 16, TotalNumber = 1352, TimeForGetNumber = 0, QuequeLength = 0, TimeForGetLength = 0, TimeInQueque = 0, QuequeLength = 1, TimeForGetLength = 0, TimeInProcess = 985</a>
+<!--div id="divSortBy">
+    <table cellspacing="0" id="tableSortBy">
+    <tr>
+    <td id="tdFirstSortBy">&nbsp;</td>
+    <td id="tdSecondSortBy">Сортування:</td>
+    <td id="tdThirdSortBy">
+    <select id="SortByDateRel" name="SortBydateRel">
+        <option value="true" >за датою ухвалення рішення</option>
+        <option value="false" selected>за релевантністю</option>
+    </select>
+    </td>
+    </tr>
+    </table>
+</div-->
+<div id="divTopNavigate"><a class="disButton">«</a><a class="disButton">&lt;</a><a class="disButton">1</a><a href="/Page/2" class="enButton">2</a><a href="/Page/3" class="enButton">3</a><a href="/Page/4" class="enButton">4</a><a href="/Page/5" class="enButton">5</a><a href="/Page/6" class="enButton">6</a><a href="/Page/7" class="enButton">7</a><a href="/Page/8" class="enButton">8</a><a href="/Page/9" class="enButton">9</a><a href="/Page/10" class="enButton">10</a><a class="dotButton">...</a><a href="/Page/3999" class="enButton">3999</a><a href="/Page/4000" class="enButton">4000</a><a href="/Page/2" class="enButton">&gt;</a><a href="/Page/4000" class="enButton">»</a></div>
+<div id="divresult">
+    <table style="border-collapse: collapse; border-spacing: 0;" id="tableresult">
+        <tbody><tr>
+            <th class="thRegNumber">
+                №&nbsp;рішення
+            </th>
+            <th class="thVRType">
+                Форма<br>судового<br>рішення
+            </th>
+            <th class="thRegDate">
+                Дата<br>ухвалення<br>рішення
+            </th>
+            <th class="thLawDate">
+                Дата<br>набрання<br>законної<br>сили
+            </th>
+            <th class="thCSType">
+                Форма<br>судочинства
+            </th>
+            <th class="thCaseNumber">
+                №&nbsp;судової&nbsp;справи
+            </th>
+            <th class="thCourtName">
+                Назва&nbsp;суду
+            </th>
+            <!--th class="thCourtCode">
+                Код<br/>суду
+            </th-->
+            <th class="thChairmenName">
+                Суддя
+            </th>
+        </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/101476997" target="_blank">101476997</a>
+                </td>
+                <td class="VRType tr1">Ухвала
+                </td>
+                <td class="RegDate tr1">21.04.0211
+                </td>
+                <td class="LawDate tr1">26.04.2011 
+                </td>
+                <td class="CSType tr1">Адміністративне
+                </td>
+                <td class="CaseNumber tr1">2-а-2968/11
+                </td>
+                <td class="CourtName tr1">Києво-Святошинський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1015
+                </td-->
+                <td class="ChairmenName tr1">Усатов Д. Д.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/107872773" target="_blank">107872773</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">23.04.1982
+                </td>
+                <td class="LawDate tr2">03.05.1982 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-7/1982
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Манацюк П.К.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/121394447" target="_blank">121394447</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">08.12.1982
+                </td>
+                <td class="LawDate tr1">18.12.1982 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-284/1982
+                </td>
+                <td class="CourtName tr1">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1021
+                </td-->
+                <td class="ChairmenName tr1">Подопригора Н. А.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/132507018" target="_blank">132507018</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">30.12.1982
+                </td>
+                <td class="LawDate tr2">09.01.1983 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-123/82
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Подопригора Н. А.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/107751396" target="_blank">107751396</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">24.03.1983
+                </td>
+                <td class="LawDate tr1">03.05.1983 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-73/1983
+                </td>
+                <td class="CourtName tr1">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1021
+                </td-->
+                <td class="ChairmenName tr1">Подопригора Н. А.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/123881459" target="_blank">123881459</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">29.12.1992
+                </td>
+                <td class="LawDate tr2">08.01.1993 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-111/92
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Поліщук Н. А.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/117308392" target="_blank">117308392</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">01.06.1994
+                </td>
+                <td class="LawDate tr1">11.06.1994 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-122/1994
+                </td>
+                <td class="CourtName tr1">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1021
+                </td-->
+                <td class="ChairmenName tr1">Дерепа В. І.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/131121714" target="_blank">131121714</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">09.02.1995
+                </td>
+                <td class="LawDate tr2">19.02.1995 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-37/1995
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Поліщук Н. О.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/99765063" target="_blank">99765063</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">05.12.1995
+                </td>
+                <td class="LawDate tr1">16.12.1995 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-1292/1995
+                </td>
+                <td class="CourtName tr1">Білоцерківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1003
+                </td-->
+                <td class="ChairmenName tr1">Сливка В. В.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/126839871" target="_blank">126839871</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">07.03.1997
+                </td>
+                <td class="LawDate tr2">17.03.1997 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-38/1997
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Поліщук Н. О.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/99555292" target="_blank">99555292</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">18.05.1997
+                </td>
+                <td class="LawDate tr1">23.05.1997 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-1182
+                </td>
+                <td class="CourtName tr1">Білоцерківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1003
+                </td-->
+                <td class="ChairmenName tr1">Тридуб С.М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/100076048" target="_blank">100076048</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">18.05.1997
+                </td>
+                <td class="LawDate tr2">23.05.1997 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-1182
+                </td>
+                <td class="CourtName tr2">Білоцерківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1003
+                </td-->
+                <td class="ChairmenName tr2">Тридуб С.М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/99603221" target="_blank">99603221</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">01.11.1997
+                </td>
+                <td class="LawDate tr1">11.11.1997 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-1307/1997
+                </td>
+                <td class="CourtName tr1">Фастівський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1027
+                </td-->
+                <td class="ChairmenName tr1">Вишняк В. І.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/116432315" target="_blank">116432315</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">11.11.1998
+                </td>
+                <td class="LawDate tr2">22.11.1998 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-326/1998
+                </td>
+                <td class="CourtName tr2">Таращанський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1025
+                </td-->
+                <td class="ChairmenName tr2">Бабоїд О. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/121761615" target="_blank">121761615</a>
+                </td>
+                <td class="VRType tr1">Ухвала
+                </td>
+                <td class="RegDate tr1">29.05.1999
+                </td>
+                <td class="LawDate tr1">29.05.1999 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-503/1999
+                </td>
+                <td class="CourtName tr1">Васильківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1008
+                </td-->
+                <td class="ChairmenName tr1">Очківський В. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/121761614" target="_blank">121761614</a>
+                </td>
+                <td class="VRType tr2">Ухвала
+                </td>
+                <td class="RegDate tr2">21.08.1999
+                </td>
+                <td class="LawDate tr2">21.08.1999 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-503/1999
+                </td>
+                <td class="CourtName tr2">Васильківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1008
+                </td-->
+                <td class="ChairmenName tr2">Очківський В. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/121761613" target="_blank">121761613</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">28.12.1999
+                </td>
+                <td class="LawDate tr1">10.01.2000 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-503/1999
+                </td>
+                <td class="CourtName tr1">Васильківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1008
+                </td-->
+                <td class="ChairmenName tr1">Очківський В. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/130226441" target="_blank">130226441</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">01.01.2000
+                </td>
+                <td class="LawDate tr2">24.12.1998 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-283/98
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Поліщук Н. О.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/124008020" target="_blank">124008020</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">01.07.2000
+                </td>
+                <td class="LawDate tr1">11.07.2000 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-361/2000
+                </td>
+                <td class="CourtName tr1">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1021
+                </td-->
+                <td class="ChairmenName tr1">Поліщук Н. А.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/126175399" target="_blank">126175399</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">17.08.2000
+                </td>
+                <td class="LawDate tr2">27.08.1999 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-329/1999
+                </td>
+                <td class="CourtName tr2">Рокитнянський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1021
+                </td-->
+                <td class="ChairmenName tr2">Рибченко А.О
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/111177003" target="_blank">111177003</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">09.02.2001
+                </td>
+                <td class="LawDate tr1">20.02.2001 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-30/2001
+                </td>
+                <td class="CourtName tr1">Володарський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1010
+                </td-->
+                <td class="ChairmenName tr1">Яковенко О. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/110190746" target="_blank">110190746</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">12.03.2001
+                </td>
+                <td class="LawDate tr2">22.03.2001 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-5/2001
+                </td>
+                <td class="CourtName tr2">Володарський районний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1010
+                </td-->
+                <td class="ChairmenName tr2">Юзвик М. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1">
+                    <a class="doc_text2" href="/Review/89649620" target="_blank">89649620</a>
+                </td>
+                <td class="VRType tr1">Рішення
+                </td>
+                <td class="RegDate tr1">26.04.2001
+                </td>
+                <td class="LawDate tr1">08.05.2001 
+                </td>
+                <td class="CSType tr1">Цивільне
+                </td>
+                <td class="CaseNumber tr1">2-714/2001
+                </td>
+                <td class="CourtName tr1">Броварський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1007
+                </td-->
+                <td class="ChairmenName tr1">Бендик О. Г.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr2">
+                    <a class="doc_text2" href="/Review/123390066" target="_blank">123390066</a>
+                </td>
+                <td class="VRType tr2">Рішення
+                </td>
+                <td class="RegDate tr2">16.10.2001
+                </td>
+                <td class="LawDate tr2">29.10.2001 
+                </td>
+                <td class="CSType tr2">Цивільне
+                </td>
+                <td class="CaseNumber tr2">2-902/2001
+                </td>
+                <td class="CourtName tr2">Васильківський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr2">1008
+                </td-->
+                <td class="ChairmenName tr2">Очківський В. М.
+                </td>
+            </tr>
+            <tr>
+                <td class="RegNumber tr1 tdLeftBottomBorder">
+                    <a class="doc_text2" href="/Review/71123954" target="_blank">71123954</a>
+                </td>
+                <td class="VRType tr1">Постанова
+                </td>
+                <td class="RegDate tr1">20.12.2001
+                </td>
+                <td class="LawDate tr1"> 
+                </td>
+                <td class="CSType tr1">Справи про адміністративні правопорушення
+                </td>
+                <td class="CaseNumber tr1">381/4025/17
+                </td>
+                <td class="CourtName tr1">Фастівський міськрайонний суд Київської області
+                </td>
+                <!--td class="CourtCode tr1">1027
+                </td-->
+                <td class="ChairmenName tr1 tdRightBottomBorder">Буймова Л. П.
+                </td>
+            </tr>
+    </tbody></table>
+</div>
+<div id="divBottomNavigate"><a class="disButton">«</a><a class="disButton">&lt;</a><a class="disButton">1</a><a href="/Page/2" class="enButton">2</a><a href="/Page/3" class="enButton">3</a><a href="/Page/4" class="enButton">4</a><a href="/Page/5" class="enButton">5</a><a href="/Page/6" class="enButton">6</a><a href="/Page/7" class="enButton">7</a><a href="/Page/8" class="enButton">8</a><a href="/Page/9" class="enButton">9</a><a href="/Page/10" class="enButton">10</a><a class="dotButton">...</a><a href="/Page/3999" class="enButton">3999</a><a href="/Page/4000" class="enButton">4000</a><a href="/Page/2" class="enButton">&gt;</a><a href="/Page/4000" class="enButton">»</a></div>
+<!--div id="divSortBy">
+    Сортування
+    <a id="SortByDate" class="aSortBy1">за датою ухвалення рішення</a>
+    <a id="SortByRel" class="aSortBy2 aSortByRight">за релевантністю</a>
+</div-->
+
+<div id="divAllDocuments">
+    Документів у системі: <a>1</a><a>3</a><a>1</a><a>0</a><a>4</a><a>1</a><a>4</a><a>9</a><a>1</a>
+</div>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(document).ready(function () {
+            var ti = 4736628;
+            var pp = 25;
+            var tp = Math.ceil(((ti > 100000)?100000:ti)/pp);
+            var cp = 1;
+            var bp = 3 + 7 + 3;
+            function htmlButton(href, bClass, text) { return '<a ' + href + ' class="' + bClass + '">' + text + '</a>'; }
+            var html = '';
+            html += htmlButton((cp != 1)?'href="/Page/1"':'',              (cp != 1)?'enButton':'disButton', '«');
+            html += htmlButton((cp != 1)?'href="/Page/' + (cp-1) + '"':'', (cp != 1)?'enButton':'disButton', '<' );
+            if (tp <= bp) {
+                for (var i = 1; i <= tp; i++) html += htmlButton((i != cp)?'href="/Page/' + i + '"':'', (i != cp)?'enButton':'disButton', i);
+            } else
+            if (cp <= Math.ceil(bp/2)) {
+                for (var i = 1; i <= bp-3; i++) html += htmlButton((i != cp)?'href="/Page/' + i + '"':'', (i != cp)?'enButton':'disButton', i);
+                html += htmlButton('', 'dotButton', '...');
+                for (var i = tp-1; i <= tp; i++) html += htmlButton('href="/Page/' + i + '"', 'enButton', i);
+            } else
+            if (cp > tp - Math.ceil(bp/2)) {
+                for (var i = 1; i <= 2; i++) html += htmlButton('href="/Page/' + i + '"', 'enButton', i);
+                html += htmlButton('', 'dotButton', '...');
+                for (var i = tp - (bp-3) + 1; i <= tp; i++) html += htmlButton((i != cp)?'href="/Page/' + i + '"':'', (i != cp)?'enButton':'disButton', i);
+            } else {
+                for (var i = 1; i <= 2; i++) html += htmlButton('href="/Page/' + i + '"', 'enButton', i);
+                html += htmlButton('', 'dotButton', '...');
+                for (var i = cp - Math.round((bp-7)/2); i <= cp + Math.round((bp-7)/2); i++) html += htmlButton((i != cp)?'href="/Page/' + i + '"':'', (i != cp)?'enButton':'disButton', i);
+                html += htmlButton('', 'dotButton', '...');
+                for (var i = tp-1; i <= tp; i++) html += htmlButton('href="/Page/' + i + '"', 'enButton', i);
+            }
+            html += htmlButton((cp != tp)?'href="/Page/' + (cp+1) + '"':'', (cp != tp)?'enButton':'disButton', '>' );
+            html += htmlButton((cp != tp)?'href="/Page/' + tp + '"':'',     (cp != tp)?'enButton':'disButton', '»');
+            $('#divTopNavigate').html(html);
+            $('#divTopNavigate').find('a.enButton').live('click', function () {blockPage();});
+            $('#divBottomNavigate').html(html);
+            $('#divBottomNavigate').find('a.enButton').live('click', function () {blockPage();});
+        });
+    });        
+</script>
+
+            </div>
+            <div id="init">
+                <!--div class="init-caption">
+                    Введіть, будь ласка, логін та пароль
+                </div-->
+                <div class="init-log">
+                    <a>Логін:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="initLog" type="text">
+                </div>
+                <div class="init-pass">
+                    <a>Пароль:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="initPass" type="password">
+                </div>
+                <div class="init-submit">
+                    <input id="initOk" type="button" value="Вхід">
+                    <input id="initCancel" type="button" value="Відмова">
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+
+		    function Btn_search_click() {
+		        if ((!$('#logon').hasClass('notVisible')) || ('1' == '1'))
+                {
+		            $('#login > form').submit();
+		            blockPage();
+		        }
+                else
+                {
+		            $('#backImage2').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+		            $('#modalcaptcha').show();
+		        }
+
+		        var fNumber = Math.floor(Math.random() * 11);
+
+		        if (fNumber == 0) {
+		            fNumber = 1;
+		        }
+
+		        var sNumber = Math.floor(Math.random() * 11);
+		        var captcha = "Вкажіть правильний результат " + fNumber + "+" + sNumber + " ";
+
+		        var summ = fNumber + sNumber;
+
+
+		        var width = parseInt($(document).width() / 2);
+		        var height = parseInt($(document).height() / 2);
+
+		        $('#modalcaptcha').css({
+		            top: 300,
+		            left: width - parseInt($('#modalcaptcha').width() / 2)
+		        });
+
+		        return false;
+		    }
+
+		    $(document).ready(function () {
+
+		       // $('#btn').click(Btn_search_click);
+
+
+
+		        $('#modalcaptcha .searchcapchaclose').click(function () {
+		            $('#modalcaptcha').hide();
+		        });
+
+		    });
+
+            </script>
+
+            <div id="modalcaptcha" style="display: none;">
+                <p style="width: 355px; text-align: justify;">З метою упередження перешкоджанню стабільній роботі Реєстру шляхом здійснення автоматичних або автоматизованих запитів на пошук та копіювання ("викачування") бази даних, запроваджено інтерактивний елемент захисту системи</p>
+
+                <div id="captchablock">
+                    <a id="captchaQuery">Введіть cуму цифр, зображених на малюнку:</a><br>
+
+                    <input id="backWord2" type="text"><br>
+                    <img id="backImage2" alt="">
+                </div>
+                <div>
+                    <button type="button" class="searchbtn">Перевірити</button>
+                    <button type="button" class="searchcapchaclose">Закрити</button>
+                </div>
+            </div>
+            <div id="back">
+                <div class="back-name">
+                    <a>Ваше ім'я:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backName" type="text" class="backName">
+                </div>
+                <div class="back-mail">
+                    <a>Ваш e-mail:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backMail" type="text" class="backMail">
+                </div>
+                <div class="back-message">
+                    <a>Повідомлення:</a><br>
+                    <a>Для помилки:</a><br>
+                    <textarea id="backMessage" class="backMessage" cols="0" rows="0"></textarea>
+                </div>
+                <div class="back-word">
+                    <a>Введіть в поле результат арифметичного виразу:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backWord" type="text" class="backWord"><br>
+                    <img id="backImage" class="backImage" alt="" title="Клікніть, щоб оновити малюнок!
+Залишилось 10 спроб!">
+                </div>
+                <div class="back-submit">
+                    <input id="backOk" type="button" class="backOk" value="Відправити">
+                    <input id="backCancel" type="button" class="backCancel" value="Скасувати">
+                </div>
+            </div>
+            <div id="block">
+                Зачекайте, будь ласка...
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        startURL = function () {
+            var url = document.URL;
+            var url_1 = url.substr(0, url.indexOf('//') + 2);
+            var url_2 = url.substr(url.indexOf('//') + 2);
+            url = url_1 + url_2.substr(0, url_2.indexOf('/') + 1);
+            return url;
+        }
+        
+        $(document).ready(function () {
+            $('#aLoginOut').click(function () {
+                if ($(this).find('label').length == 0) {
+                    $.ajax({
+                        url: startURL() + "Account/LogOff",
+                        cache: false,
+                        data: {
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data, statusLine) {
+                            $.each(data, function (i, rec) {
+                                if (rec.key == 'success') {
+                                    $('#logon').addClass('notVisible');
+                                    $('#aLoginOut').html('Повний доступ');
+                                    $('#tableLiga').removeClass('notVisible');
+                                    if ($('#Liga').val() == 'true') $('#divProviderLinks').removeAttr('style');
+                                    console.log(res, "res")
+                                    console.log(i,"i")
+                                }
+                                if (rec.key == 'error') {
+                                    alert(rec.mes);
+                                }
+                            });
+                        },
+                        error: function (e) {
+                            alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                        }
+                    });
+                    return;
+                }
+            });
+            $('#fullAccess').click(function () {
+                if ($(this).find('label').length > 0) {
+                    $.ajax({
+                        url: startURL() + "Account/LogOff",
+                        cache: false,
+                        data: {
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data, statusLine) {
+                            $.each(data, function (i, rec) {
+                                if (rec.key == 'success') {
+                                    $('#logon').addClass('notVisible');
+                                    $('#fullAccess').html('Повний доступ');
+                                    $('#tableLiga').removeClass('notVisible');
+                                    if ($('#Liga').val() == 'true') $('#divProviderLinks').removeAttr('style');
+                                }
+                                if (rec.key == 'error') {
+                                    alert(rec.mes);
+                                }
+                            });
+                        },
+                        error: function (e) {
+                            alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                        }
+                    });
+                    return;
+                }
+                //var fr = $('#init');
+                //fr.find('input:text, input:password').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                //fr.css('display', 'inline');
+                //fr.css('left', ($(window).width() - fr.outerWidth()) / 2);
+                //fr.css('top', $(window).scrollTop() + ($(window).height() - fr.outerHeight()) / 2);
+                //fr.find('input:first').focus();
+            });
+
+            $('#init').find('input:password').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $('#initOk').click();
+                }
+            });
+
+            $('#initOk').click(function () {
+                var fr = $('#init');
+                fr.find('input:text, input:password').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                var _initLog = $('#initLog').val();
+                var _initPass = Sha256.hash($('#initPass').val());
+                $.ajax({
+                    url: startURL() + "Account/LoginForm",
+                    cache: false,
+                    data: {
+                        username: _initLog,
+                        password: _initPass
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        $.each(data, function (i, rec) {
+                            if (rec.key == 'success') {
+                                if (rec.mes == '') rec.mes = _initLog;
+                                $('#logon').removeClass('notVisible').text('Ласкаво просимо, ' + rec.mes + '!');
+                                $('#fullAccess').html('<label>Вихід</label>');
+                                $('#tableLiga').addClass('notVisible');
+                                $('#divProviderLinks').attr('style', 'display: none');
+
+                                fr.css('display', 'none');
+                            }
+                            if (rec.key == 'error' && rec.mes == 'log/pass') {
+                                $('#initLog').prev().removeClass('notVisible').prev().removeClass('notVisible').text('Перевірте логін:').prev().addClass('notVisible').prev().addClass('notVisible');
+                                $('#initPass').prev().removeClass('notVisible').prev().removeClass('notVisible').text('Перевірте пароль:').prev().addClass('notVisible').prev().addClass('notVisible');
+                                $('#initLog').focus();
+                            }
+                            if (rec.key == 'error' && rec.mes != 'log/pass') {
+                                alert(key.mes);
+                            }
+                        });
+                    },
+                    error: function (e) {
+                        alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                    }
+                });
+                //fr.css('display', 'none');
+            });
+
+            $('#initCancel').click(function () {
+                var fr = $('#init');
+                fr.css('display', 'none');
+            });
+
+            $('#aRemarks').click(function () {
+                backClick();
+            });
+
+            $('#backConnection').click(function () {
+                backClick();
+            });
+
+            function backClick() {
+                var fr = $('#back');
+                $('#backImage').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+                fr.find('input:text').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.find('textarea').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.css('display', 'inline');
+                fr.css('left', ($(window).width() - fr.outerWidth()) / 2);
+                fr.css('top', $(window).scrollTop() + ($(window).height() - fr.outerHeight()) / 2);
+                fr.find('input:first').focus();
+            }
+            function CaptchaTestClick()
+            {
+
+                var _backWord = $('#backWord2').val();
+                $.ajax({
+                    url: startURL() + "Contact/Send",
+                    cache: false,
+                    data: {
+                        backWord: _backWord
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        var suc = 0;
+                        var err = '';
+                        var inp;
+
+                        $.each(data, function (i, rec) {
+                            if (rec.key == "backWord") {
+                                suc = 1;
+                            }
+
+                        });
+
+                        if (suc == 0) {
+
+                            $('#login > form').submit();
+                            blockPage();
+                        }
+                        else {
+                            $('#backImage2').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+                            $('#backWord2').val('');
+                            $("#captchaQuery").css('color', 'red');
+                        }
+                    },
+                    error: function () {
+                        alert('Виникла непередбачувана та неконтрольована помилка!');
+                    }
+                });
+                //fr.css('display', 'none');
+            }
+
+            $('#backWord2').keypress(function (e) {
+                var k = e.keyCode || e.which;
+                if (k == 13) {
+                    CaptchaTestClick();
+                    return false;
+                }
+            });
+
+            $('#modalcaptcha .searchbtn').click(CaptchaTestClick);
+
+
+            $('#backOk').click(function () {
+                var fr = $('#back');
+                fr.find('input:text').prev().addClass('notVisible').prev().addClass('notVisible').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.find('textarea').prev().addClass('notVisible').prev().addClass('notVisible').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                var _backName = $('#backName').val();
+                var _backMail = $('#backMail').val();
+                var _backMessage = $('#backMessage').val();
+                var _backWord = $('#backWord').val();
+                $.ajax({
+                    url: startURL() + "Contact/Send",
+                    cache: false,
+                    data: {
+                        backName: _backName,
+                        backMail: _backMail,
+                        backMessage: _backMessage,
+                        backWord: _backWord
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        var suc = '';
+                        var err = '';
+                        var inp;
+                        $.each(data, function (i, rec) {
+                            if (rec.key == 'success') {
+                                suc = rec.mes;
+                            }
+                            if (rec.key == 'error') {
+                                err = rec.mes;
+                            }
+                            if (rec.key == 'backName') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Поле для імені не може бути порожнім:");
+                                } else if (rec.mes == 'Small') {
+                                    inp.text("Поле для імені має бути змістовним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backMail') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Поле для e-mail не може бути порожнім:");
+                                } else if (rec.mes == 'Incorrect') {
+                                    inp.text("Поле для e-mail має бути коректним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backMessage') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Повідомлення не може бути порожнім:");
+                                } else if (rec.mes == 'Small') {
+                                    inp.text("Повідомлення має бути змістовним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backWord') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Введіть в поле результат арифметичного виразу:");
+                                } else if (rec.mes == 'Incorrect') {
+                                    inp.text("Невірні символи, спробуйте ще раз:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                        });
+                        if (suc != '') {
+                            fr.css('display', 'none');
+                            alert(suc);
+                        }
+                        if (err != '') {
+                            alert(err);
+                        }
+                    },
+                    error: function () {
+                        alert('Виникла непередбачувана та неконтрольована помилка!');
+                    }
+                });
+                //fr.css('display', 'none');
+            });
+
+            $('#backCancel').click(function () {
+                var fr = $('#back');
+                fr.css('display', 'none');
+            });
+
+            var bic = 10;
+            var cic = (new Date()).getTime();
+            var nr = String.fromCharCode(13) + String.fromCharCode(10);
+            $('#backImage').attr('title', 'Клікніть, щоб оновити малюнок!' + nr + 'Залишилось 10 спроб!');
+            $('#backImage').click(function () {
+                if (((new Date()).getTime() - cic) < 1000) { return; } else { cic = (new Date()).getTime(); }
+                --bic;
+                if (bic >= 0) $('#backImage').attr('src', '/Image?id=' + (new Date()).getTime().toString()).attr('title', (bic == 0) ? 'Ви використали усі спроби!' : ('Клікніть, щоб оновити малюнок!' + nr + 'Залишил' + ((bic == 1) ? 'а' : 'о') + 'сь ' + bic + ' ' + ((bic > 4) ? 'спроб' : ((bic == 1) ? 'спроба' : 'спроби')) + '!'));
+            });
+
+            $('body').css('visibility', 'visible');
+        });
+    });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript">
+    var gaJsHost = "https://www.";
+    document.write(unescape("%3Cscript src='" + gaJsHost + "googletagmanager.com/gtag/js?id=G-D5XE2RC1LW' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="https://www.googletagmanager.com/gtag/js?id=G-D5XE2RC1LW" type="text/javascript"></script>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-D5XE2RC1LW');
+</script>
+
+<!--script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script!-->
+<!--script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-33842633-1");
+        pageTracker._trackPageview();
+    } catch (err) { }
+</script!-->
+
+</body></html>

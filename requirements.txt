@@ -1,0 +1,7 @@
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+playwright>=1.40.0  # For headless browser automation
+selenium>=4.15.0  # Optional: alternative to Playwright
+rich>=13.0.0  # For beautiful terminal output and progress bars
+psycopg2-binary>=2.9.0  # PostgreSQL adapter for Python

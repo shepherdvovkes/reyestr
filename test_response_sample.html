@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="uk">
+
+<head>
+    <title>Єдиний державний реєстр судових рішень</title>
+    <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/all.min.js" type="text/javascript"></script>
+    <script src="/Scripts/Common.js?1" type="text/javascript"></script>
+    <script src="/Scripts/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.multiSelect.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        #modalcaptcha {
+            background-color: #F5F5F5;
+            border: 2px solid buttonshadow;
+            border-radius: 15px 15px 15px 15px;
+            font-family: "Times New Roman";
+            font-size: 15px;
+            margin: 0;
+            padding: 20px;
+            position: absolute;
+            z-index: 1;
+            display: inline;
+            left: 461.5px;
+            top: 192px;
+        }
+
+            #modalcaptcha button {
+                background-color: #F0F0F0;
+                border: 1px solid #AAAAAA;
+                border-radius: 12px 12px 12px 12px;
+                color: #393939;
+                font-size: 100%;
+                font-weight: bold;
+                height: 30px;
+                margin: 0 0 0 10px;
+                width: 150px;
+            }
+
+            #modalcaptcha .disabled {
+                color: #ddd;
+            }
+    </style>
+
+</head>
+<body style="visibility: hidden">
+    <div class="page">
+        <div id="content">
+            <div id="header">
+                <h1>Єдиний державний реєстр судових рішень</h1>
+                
+                <div class="warningblock">
+                <h4 class="warningtext">Доступ до Реєстру здійснюється в тестовому (обмеженому) режимі. Для запобігання загрозам життю і здоров'ю суддів та учасників судового процесу, а також у разі виявлення ознак кіберзагрози, доступ до Реєстру або окремих рішень у ньому може бути обмежено.</h4>
+                </div>
+                <div id="logon" class="notVisible">
+                    
+                    Ласкаво просимо, !
+                </div>
+
+                <div id="menucontainer">
+                    <table id="menu" cellpadding="0" cellspacing="0" style="text-align:center;">
+                        <tr>
+                            <td style="width: 69px; padding-left: 25px; vertical-align: middle;" class="staticTD">
+                                <img src="/Content/Images/trident2.PNG" title="Державний герб України" alt="Державний герб України" style="display: block" />
+                            </td>
+                            <td style="width: 89px">
+                                <a href="/" id="aSearch" name="aSearch">Головна</a>
+                            </td>
+                            <td style="width: 137px">
+                                <a href="/Law" id="aLaw" name="aLaw">Законодавство</a>
+                            </td>
+                            <td style="width: 96px">
+                                <a href="/Contacts" id="aContacts" name="aContacts">Контакти</a>
+                            </td>
+                            <td style="width: 91px">
+                                <a href="/Rules" id="aRules" name="aRules">Правила</a>
+                            </td>
+                            <td style="width: 100px">
+                                <a href="/Help" id="aHelp" name="aHelp">Допомога</a>
+                            </td>
+                            <td style="width: 200px">
+                                <a href="/ChangedNameCourts">Змінені назви судів</a>
+                            </td>
+                            <td style="width: 220px" class="staticTD">
+                            </td>
+                            
+                            <td style="width: 150px">
+
+<a href="/login" id="aLogin" name="aLogin">Повний доступ</a>                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="login">
+                
+<link href="/Content/multiselect/jquery.multiSelect.css" rel="stylesheet" type="text/css" />
+<link href="/Content/datepicker/jquery.datepick.css" rel="stylesheet" type="text/css" />
+
+
+<form action="/" method="post">    <div style="display: none;">
+        <img id="calImg" src="/Content/Images/calendar.png" alt="Calendar" />
+    </div>
+    <div id="divsearch">
+        <table id="tablesearch">
+            <tr>
+                <td id="tdHeaderSearch" class="tdHeaderSearch">
+                    <b>Пошук за контекстом</b>
+                    <br />
+                    <input class="searchtxt" id="SearchExpression" name="SearchExpression" type="text" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <div class="divLeftSearch">
+                <div class="intoLeftSearch">
+                <!--td id="tdLeftSearch" class="tdLeftSearch"-->
+                    <div id="myFieldSet_1" class="myFieldSet">
+                        <div class="myLegend">
+                            <a>Суд та судді</a></div>
+                        <table class="tableCourt_1">
+                            <tr>
+                                <td class="tdLeft">
+                                    Регіон&nbsp;суду
+                                </td>
+                                <td id="tdForWidth_1">
+                                    <select id="CourtRegion" multiple="multiple" name="CourtRegion"><option value="2">Автономна Республіка Крим</option>
+<option value="3">Вінницька область</option>
+<option value="4">Волинська область</option>
+<option value="5">Дніпропетровська область</option>
+<option value="6">Донецька область</option>
+<option value="7">Житомирська область</option>
+<option value="8">Закарпатська область</option>
+<option value="9">Запорізька область</option>
+<option value="10">Івано-Франківська область</option>
+<option value="11">Київська область</option>
+<option value="12">Кіровоградська область</option>
+<option value="13">Луганська область</option>
+<option value="14">Львівська область</option>
+<option value="15">Миколаївська область</option>
+<option value="16">Одеська область</option>
+<option value="17">Полтавська область</option>
+<option value="18">Рівненська область</option>
+<option value="19">Сумська область</option>
+<option value="20">Тернопільська область</option>
+<option value="21">Харківська область</option>
+<option value="22">Херсонська область</option>
+<option value="23">Хмельницька область</option>
+<option value="24">Черкаська область</option>
+<option value="25">Чернівецька область</option>
+<option value="26">Чернігівська область</option>
+<option value="27">м. Київ</option>
+<option value="28">м. Севастополь</option>
+<option value="29">ВС Центральний регіон</option>
+<option value="30">ВС Західний регіон</option>
+<option value="31">ВС Південний регіон</option>
+<option value="32">ВС ВМС України</option>
+</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Найменування<br />
+                                    суду
+                                </td>
+                                <td>
+                                    <div class="divBefore"><div></div></div>
+                                    <select id="CourtName" multiple="multiple" name="CourtName"></select>
+                                </td>
+                            </tr>
+                            <tr style="display:none;">
+                                <td class="tdLeft">
+                                    Код&nbsp;суду
+                                </td>
+                                <td>
+                                    <input id="UserCourtCode" name="UserCourtCode" type="text" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    Інстанція
+                                </td>
+                                <td>
+                                    <select id="INSType" multiple="multiple" name="INSType"><option value="1">Перша</option>
+<option value="2">Апеляційна</option>
+<option value="3">Касаційна</option>
+</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tdLeft">
+                                    ПІБ&nbsp;судді
+                                </td>
+                                <td>
+                                    <input id="ChairmenName" name="ChairmenName" type="text" value="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="myFieldSet_0" style="display: block; height: 20px;">
+                    </div>
+                    <div id="myFieldSet_2" class="myFieldSet">
+                        <div class="myLegend">
+                            <a>Судове рішення</a></div>
+                        <table class="tableCourt_2">
+                            <tr>
+                                <td class="tdLeft">
+                                    Реєстраційний<br />
+                                    №&nbsp;рішення
+                                </td>
+                                <td id="tdForWidth_2">
+                                    <input id="Re
