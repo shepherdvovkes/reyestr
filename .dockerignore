@@ -1,13 +1,52 @@
-__pycache__
-*.pyc
-*.pyo
-*.pyd
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 .Python
 venv/
 env/
+ENV/
 .venv
-*.db
-*.sqlite
-node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
-*.log
+Thumbs.db
+
+# Project specific
+downloaded_*/
+batch_results/
+screenshots/
+*.html
+*.png
+*.txt
+backups/
+logs/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# Documentation
+*.md
+!README.md
+
+# Tests
+test_*.py
+*_test.py
+
+# Config files (use env vars instead)
+.env.local
+.env.*.local

@@ -116,6 +116,28 @@ response = handler.get_page("/")
 handler.close()
 ```
 
+## Distributed Download System
+
+For distributed downloading across multiple clients, see:
+- **[DISTRIBUTED_SYSTEM.md](DISTRIBUTED_SYSTEM.md)** - Overview of the distributed system
+- **[TASK_DISTRIBUTION_SCHEME.md](TASK_DISTRIBUTION_SCHEME.md)** - How to create tasks by date ranges (year → periods → tasks)
+- **[QUICKSTART_DISTRIBUTED.md](QUICKSTART_DISTRIBUTED.md)** - Quick start guide
+
+### Creating Tasks by Date
+
+To automatically create tasks for downloading documents for a specific year, split into periods:
+
+```bash
+# Create tasks for 2024, split by months
+python create_tasks_by_date.py \
+    --api-url https://gate-server.com \
+    --year 2024 \
+    --period month \
+    --api-key YOUR_API_KEY
+```
+
+This will create 12 tasks (one per month) with `RegDateBegin` and `RegDateEnd` parameters. The server will automatically distribute these tasks to available clients.
+
 ## Important Notes
 
 - **Start with small batches** to test your implementation

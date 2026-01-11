@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="uk"><head>
+    <title>Єдиний державний реєстр судових рішень</title>
+    <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css">
+    <script src="/Scripts/all.min.js" type="text/javascript"></script>
+    <script src="/Scripts/Common.js?1" type="text/javascript"></script>
+    <script src="/Scripts/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.multiSelect.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        #modalcaptcha {
+            background-color: #F5F5F5;
+            border: 2px solid buttonshadow;
+            border-radius: 15px 15px 15px 15px;
+            font-family: "Times New Roman";
+            font-size: 15px;
+            margin: 0;
+            padding: 20px;
+            position: absolute;
+            z-index: 1;
+            display: inline;
+            left: 461.5px;
+            top: 192px;
+        }
+
+            #modalcaptcha button {
+                background-color: #F0F0F0;
+                border: 1px solid #AAAAAA;
+                border-radius: 12px 12px 12px 12px;
+                color: #393939;
+                font-size: 100%;
+                font-weight: bold;
+                height: 30px;
+                margin: 0 0 0 10px;
+                width: 150px;
+            }
+
+            #modalcaptcha .disabled {
+                color: #ddd;
+            }
+    </style>
+
+</head>
+<body style="visibility: visible;">
+    <div class="page">
+        <div id="content">
+            <div id="header" style="margin-bottom: 10px;">
+                <h1 style="display: none;">Єдиний державний реєстр судових рішень</h1>
+                
+                <div class="warningblock">
+                <h4 class="warningtext">Доступ до Реєстру здійснюється в тестовому (обмеженому) режимі. Для запобігання загрозам життю і здоров'ю суддів та учасників судового процесу, а також у разі виявлення ознак кіберзагрози, доступ до Реєстру або окремих рішень у ньому може бути обмежено.</h4>
+                </div>
+                <div id="logon" class="notVisible" style="display: none;">
+                    
+                    Ласкаво просимо, !
+                </div>
+
+                <div id="menucontainer" style="display: none;">
+                    <table id="menu" cellpadding="0" cellspacing="0" style="text-align:center;">
+                        <tbody><tr>
+                            <td style="width: 69px; padding-left: 25px; vertical-align: middle;" class="staticTD">
+                                <img src="/Content/Images/trident2.PNG" title="Державний герб України" alt="Державний герб України" style="display: block">
+                            </td>
+                            <td style="width: 89px">
+                                <a href="/" id="aSearch" name="aSearch">Головна</a>
+                            </td>
+                            <td style="width: 137px">
+                                <a href="/Law" id="aLaw" name="aLaw">Законодавство</a>
+                            </td>
+                            <td style="width: 96px">
+                                <a href="/Contacts" id="aContacts" name="aContacts">Контакти</a>
+                            </td>
+                            <td style="width: 91px">
+                                <a href="/Rules" id="aRules" name="aRules">Правила</a>
+                            </td>
+                            <td style="width: 100px">
+                                <a href="/Help" id="aHelp" name="aHelp">Допомога</a>
+                            </td>
+                            <td style="width: 200px">
+                                <a href="/ChangedNameCourts">Змінені назви судів</a>
+                            </td>
+                            <td style="width: 220px" class="staticTD">
+                            </td>
+                            
+                            <td style="width: 150px">
+
+<a href="/login" id="aLogin" name="aLogin">Повний доступ</a>                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+            <div id="login">
+                
+
+<div id="divdocument" style="height: 934.844px;">
+    <div id="divcasecat">
+        <table style="margin-bottom:10px;border-collapse: collapse; border-spacing: 0;" id="info">
+            <tbody><tr><td colspan="2" style="text-align:left;">Категорія&nbsp;справи № <b><form style="margin: 0; padding: 0; display:inline!important;" id="ree_doc" target="_blank" action="https://reyestr.court.gov.ua" accept-charset="utf-8" method="POST"><div style="display:none;"><input style="display: inline;" name="CaseNumber" value="2-7/1982" type="text"><input style="display: inline;" name="PagingInfo.ItemsPerPage" value="25" type="text"><input style="display: inline;" name="Sort" value="1" type="text"></div><a style="display: inline;" id="tooltp" title="Натисніть для перегляду всіх судових рішень по справі" href="#">2-7/1982</a></form>: Цивільні справи (з 01.01.2019); Справи позовного провадження; Справи у спорах, що виникають  із сімейних відносин, з них; про розірвання шлюбу.</b></td></tr>
+            <tr><td colspan="2" style="text-align:left;">Надіслано судом: <b>14.12.2022.</b> Зареєстровано: <b>15.12.2022.</b> Забезпечено надання загального доступу: <b>15.12.2022.</b></td></tr>
+            <tr><td colspan="2" style="text-align:left;">Дата набрання законної сили:&nbsp;<b>03.05.1982</b></td></tr>
+            <tr><td colspan="2" style="text-align:left;">Номер судового провадження: <b>-</b></td></tr>
+        </tbody></table>
+    </div>
+    <div id="divprint">
+        <input type="button" id="btnPrint" name="btnPrint" value="Версія для друку">
+    </div>
+    <iframe id="divframe" name="divframe" style="width: 958px; height: 731px;"></iframe>
+    <textarea id="txtdepository">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//DE" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+		&lt;meta name="generator" content="Rtf2Html Converter" /&gt;
+		&lt;title&gt;
+			Єдиний державний реєстр судових рішень
+		&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p align="right"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Справа&nbsp;№&nbsp;2-7&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="right"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;1982&nbsp;р.&lt;/span&gt;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;РІШЕННЯ&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;ІМ`ЯМ&nbsp;УКРАЇНСЬКОЇ&nbsp;РАДЯНСЬКОЇ&nbsp;СОЦІАЛІСТИЧНОЇ&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;РЕСПУБЛІКИ&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;23&nbsp;квітня&nbsp;1982&nbsp;р.&nbsp;народний&nbsp;суд&nbsp;Рокитнянського&nbsp;району&nbsp;Київської&nbsp;області&nbsp;в&nbsp;складі:&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;головуючого-народного&nbsp;судді&nbsp;Манацюк&nbsp;П.&nbsp;К.,&nbsp;народних&nbsp;засідателів&nbsp;Крупка&nbsp;В.&nbsp;А.,&nbsp;Крижанівський&nbsp;В.&nbsp;І.,&nbsp;при&nbsp;секретарі&nbsp;Кондратюк&nbsp;О.&nbsp;П.&nbsp;та&nbsp;адвоката&nbsp;Щедрін&nbsp;В.&nbsp;О.,&nbsp;&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;розглянувши&nbsp;у&nbsp;відкритому&nbsp;судовому&nbsp;засіданні&nbsp;в&nbsp;селищі&nbsp;Рокитно&nbsp;справу&nbsp;за&nbsp;позовом&nbsp;ОСОБА_1&nbsp;до&nbsp;ОСОБА_2&nbsp;про&nbsp;розірвання&nbsp;шлюбу&nbsp;і&nbsp;розділ&nbsp;майна.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Встановив:&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Позивачка&nbsp;звернулася&nbsp;в&nbsp;суд&nbsp;з&nbsp;позовом&nbsp;про&nbsp;розірвання&nbsp;шлюбу&nbsp;і&nbsp;розділ&nbsp;майна.&nbsp;Позов&nbsp;мотивує&nbsp;тим,&nbsp;що&nbsp;відповідач&nbsp;зловживає&nbsp;спиртними&nbsp;напоями,&nbsp;своєю&nbsp;поведінкою&nbsp;негативно&nbsp;впливає&nbsp;на&nbsp;виховання&nbsp;дитини.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Крім&nbsp;того,&nbsp;позивачка&nbsp;просить&nbsp;розділити&nbsp;сумісно&nbsp;нажите&nbsp;майно,&nbsp;що&nbsp;вказане&nbsp;в&nbsp;акті&nbsp;опису&nbsp;від&nbsp;27&nbsp;січня&nbsp;1982&nbsp;р.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Відповідач&nbsp;з&nbsp;позовом&nbsp;згодний.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Сторони&nbsp;в&nbsp;судовому&nbsp;засіданні&nbsp;прийшли&nbsp;до&nbsp;взаємної&nbsp;згоди&nbsp;про&nbsp;те,&nbsp;щоб&nbsp;позивачці&nbsp;з&nbsp;дитиною&nbsp;перейшло&nbsp;на&nbsp;праві&nbsp;власності&nbsp;Ѕ&nbsp;частина&nbsp;будинку&nbsp;яка&nbsp;їм&nbsp;належить&nbsp;обом&nbsp;в&nbsp;АДРЕСА_1&nbsp;,&nbsp;повітка,&nbsp;погріб&nbsp;на&nbsp;суму&nbsp;2832&nbsp;крб.,&nbsp;а&nbsp;також&nbsp;щоб&nbsp;позивачці&nbsp;перейшло&nbsp;слідуюче&nbsp;майно:&nbsp;мебельний&nbsp;гарнітур&nbsp;-&nbsp;400&nbsp;крб.,&nbsp;телевізор&nbsp;-&nbsp;380&nbsp;крб.,&nbsp;три&nbsp;килими&nbsp;-&nbsp;700&nbsp;крб.,&nbsp;а&nbsp;відповідачу&nbsp;була&nbsp;виділена&nbsp;автомашина&nbsp;М-2140&nbsp;№48-91КХІ&nbsp;-&nbsp;6942&nbsp;крб.&nbsp;і&nbsp;крім&nbsp;того,&nbsp;щоб&nbsp;позивачка&nbsp;сплатила&nbsp;йому&nbsp;ще&nbsp;1500&nbsp;крб.&nbsp;на&nbsp;що&nbsp;позивачка&nbsp;і&nbsp;згодна.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Суд&nbsp;вважає,&nbsp;що&nbsp;такий&nbsp;розділ&nbsp;не&nbsp;порушує&nbsp;прав&nbsp;і&nbsp;законних&nbsp;інтересів&nbsp;сторін&nbsp;і&nbsp;не&nbsp;протирічить&nbsp;закону.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Поскільки&nbsp;позивачка&nbsp;уплатила&nbsp;в&nbsp;юридичну&nbsp;консультацію&nbsp;п`ятьдесят&nbsp;карбованців&nbsp;за&nbsp;юридичну&nbsp;допомогу,&nbsp;то&nbsp;суд&nbsp;знаходить&nbsp;що&nbsp;з&nbsp;відповідача&nbsp;слід&nbsp;стягнути&nbsp;в&nbsp;користь&nbsp;позивачки&nbsp;50&nbsp;крб.,&nbsp;а&nbsp;поскільки&nbsp;позивачка&nbsp;повинна&nbsp;сплачувати&nbsp;відповідачу&nbsp;1500&nbsp;крб.,&nbsp;то&nbsp;суд&nbsp;вважає&nbsp;що&nbsp;потрібно&nbsp;провести&nbsp;зачет&nbsp;суми&nbsp;50&nbsp;крб.&nbsp;і&nbsp;позивачка&nbsp;повинна&nbsp;буде&nbsp;сплатити&nbsp;відповідачу&nbsp;1450&nbsp;крб.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Виходячи&nbsp;із&nbsp;наведеного,&nbsp;на&nbsp;підставі&nbsp;ст.&nbsp;ст.&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_94/ed_2010_07_01/pravo1/KD0004.html?pravo=1#94" title="Кодекс про шлюб та сім'ю України; нормативно-правовий акт № без номера від 20.06.1969, ВР УРСР" target="_blank"&gt;22&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_115/ed_2010_07_01/pravo1/KD0004.html?pravo=1#115" title="Кодекс про шлюб та сім'ю України; нормативно-правовий акт № без номера від 20.06.1969, ВР УРСР" target="_blank"&gt;28&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_119/ed_2010_07_01/pravo1/KD0004.html?pravo=1#119" title="Кодекс про шлюб та сім'ю України; нормативно-правовий акт № без номера від 20.06.1969, ВР УРСР" target="_blank"&gt;29&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_153/ed_2010_07_01/pravo1/KD0004.html?pravo=1#153" title="Кодекс про шлюб та сім'ю України; нормативно-правовий акт № без номера від 20.06.1969, ВР УРСР" target="_blank"&gt;38&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_158/ed_2010_07_01/pravo1/KD0004.html?pravo=1#158" title="Кодекс про шлюб та сім'ю України; нормативно-правовий акт № без номера від 20.06.1969, ВР УРСР" target="_blank"&gt;40&nbsp;КпШС&lt;/a&gt;&nbsp;УРСР&nbsp;,&nbsp;керуючись&nbsp;ст.&nbsp;ст.&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_7489/ed_2022_10_18/pravo1/T04_1618.html?pravo=1#7489" title="Цивільний процесуальний кодекс України (ред. з 15.12.2017); нормативно-правовий акт № 1618-IV від 18.03.2004, ВР України" target="_blank"&gt;15&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_7568/ed_2022_10_18/pravo1/T04_1618.html?pravo=1#7568" title="Цивільний процесуальний кодекс України (ред. з 15.12.2017); нормативно-правовий акт № 1618-IV від 18.03.2004, ВР України" target="_blank"&gt;30&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_7816/ed_2022_10_18/pravo1/T04_1618.html?pravo=1#7816" title="Цивільний процесуальний кодекс України (ред. з 15.12.2017); нормативно-правовий акт № 1618-IV від 18.03.2004, ВР України" target="_blank"&gt;62&lt;/a&gt;,&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/an_8921/ed_2022_10_18/pravo1/T04_1618.html?pravo=1#8921" title="Цивільний процесуальний кодекс України (ред. з 15.12.2017); нормативно-правовий акт № 1618-IV від 18.03.2004, ВР України" target="_blank"&gt;202&nbsp;ЦПК&lt;/a&gt;&nbsp;УРСР,&nbsp;суд&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Рішив:&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Позов&nbsp;задовольнити.&nbsp;Шлюб&nbsp;між&nbsp;ОСОБА_2&nbsp;і&nbsp;ОСОБА_1&nbsp;,&nbsp;зареєстрований&nbsp;20&nbsp;липня&nbsp;1969&nbsp;року&nbsp;в&nbsp;Жашківському&nbsp;райвідділі&nbsp;ЗАГС,&nbsp;Черкаської&nbsp;області,&nbsp;-&nbsp;розірвати.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;При&nbsp;видачі&nbsp;свідоцтва&nbsp;про&nbsp;розірвання&nbsp;шлюбу&nbsp;в&nbsp;органах&nbsp;ЗАГС&nbsp;стягнути&nbsp;з&nbsp;ОСОБА_2&nbsp;в&nbsp;користь&nbsp;держави&nbsp;п`ятьдесят&nbsp;карбованців&nbsp;судових&nbsp;витрат.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Визнати&nbsp;за&nbsp;ОСОБА_1&nbsp;право&nbsp;власності&nbsp;на&nbsp;Ѕ&nbsp;частину&nbsp;будинку&nbsp;в&nbsp;АДРЕСА_1&nbsp;,&nbsp;а&nbsp;саме&nbsp;приміщення,&nbsp;що&nbsp;вказані&nbsp;в&nbsp;поетажному&nbsp;плані,&nbsp;під&nbsp;номерами:&nbsp;1-7,&nbsp;1-6,&nbsp;1-5,&nbsp;1-4,&nbsp;1-3&nbsp;та&nbsp;веранду&nbsp;з&nbsp;прибудовою&nbsp;1-1&nbsp;і&nbsp;1-2,&nbsp;а&nbsp;також&nbsp;виділити&nbsp;їй&nbsp;сарай,&nbsp;погріб&nbsp;і&nbsp;мебельний&nbsp;гарнітур&nbsp;-&nbsp;400&nbsp;крб.,&nbsp;телевізор&nbsp;Славутич&nbsp;-&nbsp;380&nbsp;крб.,&nbsp;кухонний&nbsp;гарнітур&nbsp;-&nbsp;400&nbsp;крб.,&nbsp;три&nbsp;килими&nbsp;розміром&nbsp;1,5х1,2&nbsp;м&nbsp;-&nbsp;на&nbsp;суму&nbsp;700&nbsp;крб.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;ОСОБА_2&nbsp;виділити&nbsp;легковий&nbsp;автомобіль&nbsp;М-2140&nbsp;№&nbsp;48-91&nbsp;КХІ&nbsp;-&nbsp;6942&nbsp;крб.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Стягнути&nbsp;з&nbsp;ОСОБА_1&nbsp;в&nbsp;користь&nbsp;ОСОБА_2&nbsp;1450&nbsp;(одну&nbsp;тисячу&nbsp;чотириста&nbsp;п`ятьдесят)&nbsp;карбованців&nbsp;грошової&nbsp;компенсації&nbsp;за&nbsp;частину&nbsp;майна.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Рішення&nbsp;може&nbsp;бути&nbsp;оскаржене&nbsp;в&nbsp;Київський&nbsp;облсуд&nbsp;через&nbsp;нарсуд&nbsp;протягом&nbsp;десяти&nbsp;днів.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Нарсуддя&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Нарзасідателі&lt;/span&gt;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+
+	&lt;/body&gt;
+&lt;/html&gt;</textarea>
+</div>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(document).ready(function () {
+            $('h1').css('display', 'none');
+            $('#logon').css('display', 'none');
+            $('#menucontainer').css('display', 'none');
+            $('#header').css('margin-bottom', '10px');
+            function windowResize() {
+                var el = $('#divdocument');
+                el.height($(window).height() - 1 - el.offset().top - el.outerHeight(true) + el.height());
+                var el = $('#divframe');
+                el.width($('#divdocument').width() - el.outerWidth(true) + el.width());
+                el.height($('#divdocument').height() - $('#divcasecat').outerHeight(true) - $('#divprint').outerHeight() - el.outerHeight(true) + el.height());
+            }
+            windowResize();
+            $(window).resize(function () {
+                windowResize();
+            });
+
+            var el = $('#txtdepository');
+            var src = el.text();
+            var txt = '';
+            var pos = 0;
+            var step = 32766;
+            while (pos < src.length) {
+                el.text(src.substr(pos, step));
+                pos += step;
+                txt = txt + el.html();
+            }
+            txt = txt.replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/color/gi, "tag1").replace(/font-family/gi, "tag2").replace(/font-size/gi, "tag3").replace(/line-height/gi, "tag4").replace(/text-indent/gi, "tag5").replace(/margin/gi, "tag6").replace(/padding/gi, "tag7");
+
+            var s1 = "&nbsp;";
+            var s2 = s1 + s1;
+            var ix = 0;
+            var ix2 = 0;
+            while (ix < txt.length && (ix2 = txt.indexOf(s1, ix)) >= 0) {
+                if (ix2 == txt.indexOf(s2, ix)) {
+                    ix = ix2 + s2.length;
+                } else {
+                    txt = txt.substr(0, ix2) + " " + txt.substr(ix2 + s1.length);
+                    ix = ix2;
+                }
+            }
+
+            divframe.document.open();
+            divframe.document.write(txt);
+            divframe.document.close();
+            $('#divframe').contents().find('head').each(function () {
+                try {
+                    // Для версій ІЕ <= 8 код не працює, тому ставимо обгорточку try
+                    $(this).find('title').html($('html').find('title').html());
+                } catch (e) { }
+                $(this).html('<link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon" />' + $(this).html());
+            }).parent('html').find('body').each(function () {
+                $(this).css('margin', '0').css('padding', '10px');
+                $(this).find('img').remove();
+                $(this).html('<div style="display: block; text-align: center"><img /></div>' + $(this).html());
+                $(this).find('img').attr('src', '/Content/Images/rada.gif').attr('title', 'Державний герб України').attr('alt', 'Державний герб України');
+            });
+            $('a#tooltp').click(function () {
+                $('form#ree_doc').submit();
+            });
+            $('#btnPrint').click(function () {
+                $('#divframe').contents().find('html').prepend('<hr />');
+                $('#divframe').contents().find('html').prepend($('div#divcasecat').html());
+                document.write($('#divframe').contents().find('html').html());
+                document.close();
+                $('a:link').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+                $('a:visited').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+                $('a:hover').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+                $('a:active').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+            });
+        });
+    });
+</script>
+            </div>
+            <div id="init">
+                <!--div class="init-caption">
+                    Введіть, будь ласка, логін та пароль
+                </div-->
+                <div class="init-log">
+                    <a>Логін:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="initLog" type="text">
+                </div>
+                <div class="init-pass">
+                    <a>Пароль:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="initPass" type="password">
+                </div>
+                <div class="init-submit">
+                    <input id="initOk" type="button" value="Вхід">
+                    <input id="initCancel" type="button" value="Відмова">
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+
+		    function Btn_search_click() {
+		        if ((!$('#logon').hasClass('notVisible')) || ('1' == '1'))
+                {
+		            $('#login > form').submit();
+		            blockPage();
+		        }
+                else
+                {
+		            $('#backImage2').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+		            $('#modalcaptcha').show();
+		        }
+
+		        var fNumber = Math.floor(Math.random() * 11);
+
+		        if (fNumber == 0) {
+		            fNumber = 1;
+		        }
+
+		        var sNumber = Math.floor(Math.random() * 11);
+		        var captcha = "Вкажіть правильний результат " + fNumber + "+" + sNumber + " ";
+
+		        var summ = fNumber + sNumber;
+
+
+		        var width = parseInt($(document).width() / 2);
+		        var height = parseInt($(document).height() / 2);
+
+		        $('#modalcaptcha').css({
+		            top: 300,
+		            left: width - parseInt($('#modalcaptcha').width() / 2)
+		        });
+
+		        return false;
+		    }
+
+		    $(document).ready(function () {
+
+		       // $('#btn').click(Btn_search_click);
+
+
+
+		        $('#modalcaptcha .searchcapchaclose').click(function () {
+		            $('#modalcaptcha').hide();
+		        });
+
+		    });
+
+            </script>
+
+            <div id="modalcaptcha" style="display: none;">
+                <p style="width: 355px; text-align: justify;">З метою упередження перешкоджанню стабільній роботі Реєстру шляхом здійснення автоматичних або автоматизованих запитів на пошук та копіювання ("викачування") бази даних, запроваджено інтерактивний елемент захисту системи</p>
+
+                <div id="captchablock">
+                    <a id="captchaQuery">Введіть cуму цифр, зображених на малюнку:</a><br>
+
+                    <input id="backWord2" type="text"><br>
+                    <img id="backImage2" alt="">
+                </div>
+                <div>
+                    <button type="button" class="searchbtn">Перевірити</button>
+                    <button type="button" class="searchcapchaclose">Закрити</button>
+                </div>
+            </div>
+            <div id="back">
+                <div class="back-name">
+                    <a>Ваше ім'я:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backName" type="text" class="backName">
+                </div>
+                <div class="back-mail">
+                    <a>Ваш e-mail:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backMail" type="text" class="backMail">
+                </div>
+                <div class="back-message">
+                    <a>Повідомлення:</a><br>
+                    <a>Для помилки:</a><br>
+                    <textarea id="backMessage" class="backMessage" cols="0" rows="0"></textarea>
+                </div>
+                <div class="back-word">
+                    <a>Введіть в поле результат арифметичного виразу:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backWord" type="text" class="backWord"><br>
+                    <img id="backImage" class="backImage" alt="" title="Клікніть, щоб оновити малюнок!
+Залишилось 10 спроб!">
+                </div>
+                <div class="back-submit">
+                    <input id="backOk" type="button" class="backOk" value="Відправити">
+                    <input id="backCancel" type="button" class="backCancel" value="Скасувати">
+                </div>
+            </div>
+            <div id="block">
+                Зачекайте, будь ласка...
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        startURL = function () {
+            var url = document.URL;
+            var url_1 = url.substr(0, url.indexOf('//') + 2);
+            var url_2 = url.substr(url.indexOf('//') + 2);
+            url = url_1 + url_2.substr(0, url_2.indexOf('/') + 1);
+            return url;
+        }
+        
+        $(document).ready(function () {
+            $('#aLoginOut').click(function () {
+                if ($(this).find('label').length == 0) {
+                    $.ajax({
+                        url: startURL() + "Account/LogOff",
+                        cache: false,
+                        data: {
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data, statusLine) {
+                            $.each(data, function (i, rec) {
+                                if (rec.key == 'success') {
+                                    $('#logon').addClass('notVisible');
+                                    $('#aLoginOut').html('Повний доступ');
+                                    $('#tableLiga').removeClass('notVisible');
+                                    if ($('#Liga').val() == 'true') $('#divProviderLinks').removeAttr('style');
+                                    console.log(res, "res")
+                                    console.log(i,"i")
+                                }
+                                if (rec.key == 'error') {
+                                    alert(rec.mes);
+                                }
+                            });
+                        },
+                        error: function (e) {
+                            alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                        }
+                    });
+                    return;
+                }
+            });
+            $('#fullAccess').click(function () {
+                if ($(this).find('label').length > 0) {
+                    $.ajax({
+                        url: startURL() + "Account/LogOff",
+                        cache: false,
+                        data: {
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data, statusLine) {
+                            $.each(data, function (i, rec) {
+                                if (rec.key == 'success') {
+                                    $('#logon').addClass('notVisible');
+                                    $('#fullAccess').html('Повний доступ');
+                                    $('#tableLiga').removeClass('notVisible');
+                                    if ($('#Liga').val() == 'true') $('#divProviderLinks').removeAttr('style');
+                                }
+                                if (rec.key == 'error') {
+                                    alert(rec.mes);
+                                }
+                            });
+                        },
+                        error: function (e) {
+                            alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                        }
+                    });
+                    return;
+                }
+                //var fr = $('#init');
+                //fr.find('input:text, input:password').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                //fr.css('display', 'inline');
+                //fr.css('left', ($(window).width() - fr.outerWidth()) / 2);
+                //fr.css('top', $(window).scrollTop() + ($(window).height() - fr.outerHeight()) / 2);
+                //fr.find('input:first').focus();
+            });
+
+            $('#init').find('input:password').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $('#initOk').click();
+                }
+            });
+
+            $('#initOk').click(function () {
+                var fr = $('#init');
+                fr.find('input:text, input:password').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                var _initLog = $('#initLog').val();
+                var _initPass = Sha256.hash($('#initPass').val());
+                $.ajax({
+                    url: startURL() + "Account/LoginForm",
+                    cache: false,
+                    data: {
+                        username: _initLog,
+                        password: _initPass
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        $.each(data, function (i, rec) {
+                            if (rec.key == 'success') {
+                                if (rec.mes == '') rec.mes = _initLog;
+                                $('#logon').removeClass('notVisible').text('Ласкаво просимо, ' + rec.mes + '!');
+                                $('#fullAccess').html('<label>Вихід</label>');
+                                $('#tableLiga').addClass('notVisible');
+                                $('#divProviderLinks').attr('style', 'display: none');
+
+                                fr.css('display', 'none');
+                            }
+                            if (rec.key == 'error' && rec.mes == 'log/pass') {
+                                $('#initLog').prev().removeClass('notVisible').prev().removeClass('notVisible').text('Перевірте логін:').prev().addClass('notVisible').prev().addClass('notVisible');
+                                $('#initPass').prev().removeClass('notVisible').prev().removeClass('notVisible').text('Перевірте пароль:').prev().addClass('notVisible').prev().addClass('notVisible');
+                                $('#initLog').focus();
+                            }
+                            if (rec.key == 'error' && rec.mes != 'log/pass') {
+                                alert(key.mes);
+                            }
+                        });
+                    },
+                    error: function (e) {
+                        alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                    }
+                });
+                //fr.css('display', 'none');
+            });
+
+            $('#initCancel').click(function () {
+                var fr = $('#init');
+                fr.css('display', 'none');
+            });
+
+            $('#aRemarks').click(function () {
+                backClick();
+            });
+
+            $('#backConnection').click(function () {
+                backClick();
+            });
+
+            function backClick() {
+                var fr = $('#back');
+                $('#backImage').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+                fr.find('input:text').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.find('textarea').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.css('display', 'inline');
+                fr.css('left', ($(window).width() - fr.outerWidth()) / 2);
+                fr.css('top', $(window).scrollTop() + ($(window).height() - fr.outerHeight()) / 2);
+                fr.find('input:first').focus();
+            }
+            function CaptchaTestClick()
+            {
+
+                var _backWord = $('#backWord2').val();
+                $.ajax({
+                    url: startURL() + "Contact/Send",
+                    cache: false,
+                    data: {
+                        backWord: _backWord
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        var suc = 0;
+                        var err = '';
+                        var inp;
+
+                        $.each(data, function (i, rec) {
+                            if (rec.key == "backWord") {
+                                suc = 1;
+                            }
+
+                        });
+
+                        if (suc == 0) {
+
+                            $('#login > form').submit();
+                            blockPage();
+                        }
+                        else {
+                            $('#backImage2').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+                            $('#backWord2').val('');
+                            $("#captchaQuery").css('color', 'red');
+                        }
+                    },
+                    error: function () {
+                        alert('Виникла непередбачувана та неконтрольована помилка!');
+                    }
+                });
+                //fr.css('display', 'none');
+            }
+
+            $('#backWord2').keypress(function (e) {
+                var k = e.keyCode || e.which;
+                if (k == 13) {
+                    CaptchaTestClick();
+                    return false;
+                }
+            });
+
+            $('#modalcaptcha .searchbtn').click(CaptchaTestClick);
+
+
+            $('#backOk').click(function () {
+                var fr = $('#back');
+                fr.find('input:text').prev().addClass('notVisible').prev().addClass('notVisible').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.find('textarea').prev().addClass('notVisible').prev().addClass('notVisible').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                var _backName = $('#backName').val();
+                var _backMail = $('#backMail').val();
+                var _backMessage = $('#backMessage').val();
+                var _backWord = $('#backWord').val();
+                $.ajax({
+                    url: startURL() + "Contact/Send",
+                    cache: false,
+                    data: {
+                        backName: _backName,
+                        backMail: _backMail,
+                        backMessage: _backMessage,
+                        backWord: _backWord
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        var suc = '';
+                        var err = '';
+                        var inp;
+                        $.each(data, function (i, rec) {
+                            if (rec.key == 'success') {
+                                suc = rec.mes;
+                            }
+                            if (rec.key == 'error') {
+                                err = rec.mes;
+                            }
+                            if (rec.key == 'backName') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Поле для імені не може бути порожнім:");
+                                } else if (rec.mes == 'Small') {
+                                    inp.text("Поле для імені має бути змістовним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backMail') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Поле для e-mail не може бути порожнім:");
+                                } else if (rec.mes == 'Incorrect') {
+                                    inp.text("Поле для e-mail має бути коректним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backMessage') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Повідомлення не може бути порожнім:");
+                                } else if (rec.mes == 'Small') {
+                                    inp.text("Повідомлення має бути змістовним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backWord') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Введіть в поле результат арифметичного виразу:");
+                                } else if (rec.mes == 'Incorrect') {
+                                    inp.text("Невірні символи, спробуйте ще раз:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                        });
+                        if (suc != '') {
+                            fr.css('display', 'none');
+                            alert(suc);
+                        }
+                        if (err != '') {
+                            alert(err);
+                        }
+                    },
+                    error: function () {
+                        alert('Виникла непередбачувана та неконтрольована помилка!');
+                    }
+                });
+                //fr.css('display', 'none');
+            });
+
+            $('#backCancel').click(function () {
+                var fr = $('#back');
+                fr.css('display', 'none');
+            });
+
+            var bic = 10;
+            var cic = (new Date()).getTime();
+            var nr = String.fromCharCode(13) + String.fromCharCode(10);
+            $('#backImage').attr('title', 'Клікніть, щоб оновити малюнок!' + nr + 'Залишилось 10 спроб!');
+            $('#backImage').click(function () {
+                if (((new Date()).getTime() - cic) < 1000) { return; } else { cic = (new Date()).getTime(); }
+                --bic;
+                if (bic >= 0) $('#backImage').attr('src', '/Image?id=' + (new Date()).getTime().toString()).attr('title', (bic == 0) ? 'Ви використали усі спроби!' : ('Клікніть, щоб оновити малюнок!' + nr + 'Залишил' + ((bic == 1) ? 'а' : 'о') + 'сь ' + bic + ' ' + ((bic > 4) ? 'спроб' : ((bic == 1) ? 'спроба' : 'спроби')) + '!'));
+            });
+
+            $('body').css('visibility', 'visible');
+        });
+    });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript">
+    var gaJsHost = "https://www.";
+    document.write(unescape("%3Cscript src='" + gaJsHost + "googletagmanager.com/gtag/js?id=G-D5XE2RC1LW' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="https://www.googletagmanager.com/gtag/js?id=G-D5XE2RC1LW" type="text/javascript"></script>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-D5XE2RC1LW');
+</script>
+
+<!--script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script!-->
+<!--script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-33842633-1");
+        pageTracker._trackPageview();
+    } catch (err) { }
+</script!-->
+
+</body></html>

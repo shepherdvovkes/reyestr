@@ -13,7 +13,7 @@ from typing import Dict, List
 # Database connection parameters
 DB_CONFIG = {
     'host': 'localhost',
-    'port': 5432,
+    'port': 5433,  # Docker container port (mapped from 5432)
     'database': 'reyestr_db',
     'user': 'reyestr_user',
     'password': 'reyestr_password'

@@ -8,12 +8,14 @@ from bulk_requests_playwright import PlaywrightBulkHandler, PlaywrightConfig
 import logging
 import json
 from extract_text_from_print import extract_text_from_html
-from typing import Dict
+from typing import Dict, Optional
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn, TaskID
 from rich.table import Table
 from rich.panel import Panel
 from rich import box
+import psycopg2
+from datetime import datetime
 
 # Configure logging to be less verbose (rich will handle display)
 logging.basicConfig(
@@ -23,6 +25,258 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 console = Console()
+
+# Database connection parameters
+DB_CONFIG = {
+    'host': '127.0.0.1',
+    'port': 5433,  # Docker container port (mapped from 5432)
+    'database': 'reyestr_db',
+    'user': 'reyestr_user',
+    'password': 'reyestr_password'
+}
+
+
+def parse_date(date_str: str) -> Optional[datetime.date]:
+    """Parse date string in DD.MM.YYYY format"""
+    if not date_str or date_str.strip() == '':
+        return None
+    try:
+        return datetime.strptime(date_str.strip(), '%d.%m.%Y').date()
+    except ValueError:
+        return None
+
+
+def ensure_document_in_db(doc_link: Dict) -> bool:
+    """
+    Ensure document exists in database, create if it doesn't exist
+    
+    Returns:
+        True if document exists or was created, False on error
+    """
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+        
+        doc_id = doc_link.get('id', '')
+        if not doc_id:
+            cur.close()
+            conn.close()
+            return False
+        
+        # Check if document exists
+        cur.execute("SELECT id FROM documents WHERE id = %s", (doc_id,))
+        if cur.fetchone():
+            # Document exists, optionally update metadata
+            cur.execute("""
+                UPDATE documents SET
+                    url = COALESCE(%s, url),
+                    reg_number = COALESCE(%s, reg_number),
+                    decision_type = COALESCE(%s, decision_type),
+                    decision_date = COALESCE(%s, decision_date),
+                    law_date = COALESCE(%s, law_date),
+                    case_type = COALESCE(%s, case_type),
+                    case_number = COALESCE(%s, case_number),
+                    court_name = COALESCE(%s, court_name),
+                    judge_name = COALESCE(%s, judge_name),
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s
+            """, (
+                doc_link.get('url'),
+                doc_link.get('reg_number'),
+                doc_link.get('decision_type'),
+                parse_date(doc_link.get('decision_date', '')),
+                parse_date(doc_link.get('law_date', '')),
+                doc_link.get('case_type'),
+                doc_link.get('case_number'),
+                doc_link.get('court_name'),
+                doc_link.get('judge_name'),
+                doc_id
+            ))
+        else:
+            # Document doesn't exist, create it
+            # First, get or create a default search session
+            cur.execute("""
+                SELECT id FROM search_sessions 
+                ORDER BY created_at DESC 
+                LIMIT 1
+            """)
+            session_row = cur.fetchone()
+            session_id = session_row[0] if session_row else None
+            
+            if not session_id:
+                # Create a default session for downloaded documents
+                cur.execute("""
+                    INSERT INTO search_sessions (search_date, total_extracted)
+                    VALUES (CURRENT_DATE, 0)
+                    RETURNING id
+                """)
+                session_id = cur.fetchone()[0]
+            
+            # Insert document
+            cur.execute("""
+                INSERT INTO documents (
+                    id, search_session_id, url, reg_number, decision_type,
+                    decision_date, law_date, case_type, case_number,
+                    court_name, judge_name
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (id) DO NOTHING
+            """, (
+                doc_id,
+                session_id,
+                doc_link.get('url', ''),
+                doc_link.get('reg_number', doc_id),
+                doc_link.get('decision_type'),
+                parse_date(doc_link.get('decision_date', '')),
+                parse_date(doc_link.get('law_date', '')),
+                doc_link.get('case_type'),
+                doc_link.get('case_number'),
+                doc_link.get('court_name'),
+                doc_link.get('judge_name')
+            ))
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+        return True
+        
+    except Exception as e:
+        logger.warning(f"Database error ensuring document {doc_link.get('id', 'unknown')}: {e}")
+        try:
+            conn.rollback()
+            cur.close()
+            conn.close()
+        except:
+            pass
+        return False
+
+
+def document_has_content_in_db(document_id: str) -> bool:
+    """
+    Check if document already has content in database
+    
+    Args:
+        document_id: Document ID to check
+    
+    Returns:
+        True if document has at least one content record, False otherwise
+    """
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+        
+        cur.execute("""
+            SELECT COUNT(*) 
+            FROM document_content 
+            WHERE document_id = %s
+        """, (document_id,))
+        
+        count = cur.fetchone()[0]
+        cur.close()
+        conn.close()
+        
+        return count > 0
+        
+    except Exception as e:
+        logger.warning(f"Database error checking content for {document_id}: {e}")
+        return False
+
+
+def save_document_content_to_db(
+    document_id: str,
+    content_type: str,
+    file_path: Optional[Path] = None,
+    content_text: Optional[str] = None,
+    file_size: Optional[int] = None
+) -> bool:
+    """
+    Save document content to database
+    
+    Args:
+        document_id: Document ID
+        content_type: 'html', 'print_html', 'text', or 'pdf'
+        file_path: Path to the file on disk
+        content_text: Text content (for text files, can be read from file)
+        file_size: File size in bytes
+    
+    Returns:
+        True if saved successfully, False on error
+    """
+    try:
+        # Validate content type
+        if content_type not in ['html', 'print_html', 'text', 'pdf']:
+            logger.warning(f"Invalid content_type: {content_type}")
+            return False
+        
+        # Read file size if not provided
+        if file_path and file_path.exists() and file_size is None:
+            file_size = file_path.stat().st_size
+        
+        # Read text content if not provided and it's a text file
+        if content_text is None and file_path and file_path.exists():
+            if content_type == 'text' or (content_type == 'print_html' and file_path.suffix == '.txt'):
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content_text = f.read()
+                except Exception as e:
+                    logger.warning(f"Could not read text content from {file_path}: {e}")
+        
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+        
+        # Check if content already exists for this document and type
+        cur.execute("""
+            SELECT id FROM document_content 
+            WHERE document_id = %s AND content_type = %s
+        """, (document_id, content_type))
+        
+        existing = cur.fetchone()
+        
+        if existing:
+            # Update existing content
+            cur.execute("""
+                UPDATE document_content SET
+                    file_path = COALESCE(%s, file_path),
+                    content_text = COALESCE(%s, content_text),
+                    file_size_bytes = COALESCE(%s, file_size_bytes)
+                WHERE document_id = %s AND content_type = %s
+            """, (
+                str(file_path) if file_path else None,
+                content_text,
+                file_size,
+                document_id,
+                content_type
+            ))
+        else:
+            # Insert new content
+            cur.execute("""
+                INSERT INTO document_content (
+                    document_id, content_type, file_path, 
+                    content_text, file_size_bytes
+                )
+                VALUES (%s, %s, %s, %s, %s)
+            """, (
+                document_id,
+                content_type,
+                str(file_path) if file_path else None,
+                content_text,
+                file_size
+            ))
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+        return True
+        
+    except Exception as e:
+        logger.warning(f"Database error saving content for {document_id} ({content_type}): {e}")
+        try:
+            conn.rollback()
+            cur.close()
+            conn.close()
+        except:
+            pass
+        return False
 
 
 async def process_single_document(
@@ -62,6 +316,21 @@ async def process_single_document(
     
     async with semaphore:  # Limit concurrent connections
         try:
+            # Check if document already has content in database (resume support)
+            if document_has_content_in_db(doc_id):
+                progress.update(
+                    task_id,
+                    description=f"[yellow]Skipping[/yellow] {reg_number} - already downloaded"
+                )
+                progress.advance(task_id)
+                return {
+                    'document_id': doc_id,
+                    'reg_number': reg_number,
+                    'success': True,
+                    'skipped': True,
+                    'reason': 'already_in_database'
+                }
+            
             # Update progress description
             progress.update(
                 task_id,
@@ -95,6 +364,7 @@ async def process_single_document(
             
             # Extract text from print version
             text_extracted = False
+            txt_file = None
             if print_version_path:
                 try:
                     text = extract_text_from_html(Path(print_version_path))
@@ -112,13 +382,101 @@ async def process_single_document(
             with open(metadata_file, 'w', encoding='utf-8') as f:
                 json.dump(doc_link, f, indent=2, ensure_ascii=False)
             
+            # Extract metadata from HTML files
+            extracted_metadata = {}
+            try:
+                # Import here to avoid circular dependency
+                from update_metadata_from_html import extract_metadata_from_html, update_document_metadata_in_db
+                
+                if print_version_path and Path(print_version_path).exists():
+                    try:
+                        extracted_metadata = extract_metadata_from_html(Path(print_version_path))
+                    except Exception as e:
+                        logger.warning(f"Could not extract metadata from print version: {e}")
+                
+                # If print version didn't yield metadata, try regular HTML
+                if not any(extracted_metadata.values()) and downloaded_path and Path(downloaded_path).exists():
+                    try:
+                        extracted_metadata = extract_metadata_from_html(Path(downloaded_path))
+                    except Exception as e:
+                        logger.warning(f"Could not extract metadata from HTML: {e}")
+                
+                # Merge extracted metadata with existing doc_link metadata
+                if extracted_metadata:
+                    for key, value in extracted_metadata.items():
+                        if value and not doc_link.get(key):
+                            doc_link[key] = value
+            except ImportError:
+                # Module not available, skip metadata extraction
+                pass
+            except Exception as e:
+                logger.warning(f"Metadata extraction failed: {e}")
+            
+            # Save to database
+            db_saved = False
+            db_content_saved = 0
+            metadata_updated = False
+            try:
+                # Ensure document exists in database and update with extracted metadata
+                if ensure_document_in_db(doc_link):
+                    db_saved = True
+                    
+                    # Update metadata if we extracted new information
+                    if extracted_metadata and any(extracted_metadata.values()):
+                        try:
+                            from update_metadata_from_html import update_document_metadata_in_db
+                            if update_document_metadata_in_db(doc_id, extracted_metadata):
+                                metadata_updated = True
+                        except Exception as e:
+                            logger.warning(f"Could not update metadata in DB: {e}")
+                    
+                    # Save content to database
+                    if print_version_path and Path(print_version_path).exists():
+                        if save_document_content_to_db(
+                            document_id=doc_id,
+                            content_type='print_html',
+                            file_path=Path(print_version_path)
+                        ):
+                            db_content_saved += 1
+                    
+                    if downloaded_path and Path(downloaded_path).exists():
+                        if save_document_content_to_db(
+                            document_id=doc_id,
+                            content_type='html',
+                            file_path=Path(downloaded_path)
+                        ):
+                            db_content_saved += 1
+                    
+                    if txt_file and txt_file.exists():
+                        # Read text content for database
+                        try:
+                            with open(txt_file, 'r', encoding='utf-8') as f:
+                                text_content = f.read()
+                            if save_document_content_to_db(
+                                document_id=doc_id,
+                                content_type='text',
+                                file_path=txt_file,
+                                content_text=text_content
+                            ):
+                                db_content_saved += 1
+                        except Exception as e:
+                            logger.warning(f"Could not save text content to DB: {e}")
+            except Exception as e:
+                logger.warning(f"Database save failed for {doc_id}: {e}")
+                # Don't fail the download if DB save fails
+            
             result = {
                 'document_id': doc_id,
                 'reg_number': reg_number,
                 'success': True,
+                'skipped': False,
                 'print_version_saved': bool(print_version_path),
                 'html_saved': bool(downloaded_path),
-                'text_extracted': text_extracted
+                'text_extracted': text_extracted,
+                'db_saved': db_saved,
+                'db_content_records': db_content_saved,
+                'metadata_extracted': bool(extracted_metadata and any(extracted_metadata.values())),
+                'metadata_updated': metadata_updated
             }
             
             # Update progress
@@ -249,8 +607,27 @@ async def download_100_documents(start_page: int = 6, max_documents: int = 100):
             console.print("[bold red]✗ No documents found[/bold red]")
             return
         
+        # Filter out documents that already have content in database (resume support)
+        console.print(f"\n[bold cyan]Checking database for existing documents...[/bold cyan]")
+        documents_to_download = []
+        already_downloaded = []
+        
+        for doc_link in document_links:
+            doc_id = doc_link.get('id', '')
+            if doc_id and document_has_content_in_db(doc_id):
+                already_downloaded.append(doc_id)
+            else:
+                documents_to_download.append(doc_link)
+        
+        if already_downloaded:
+            console.print(f"[yellow]Skipping {len(already_downloaded)} already downloaded documents[/yellow]")
+        
+        if not documents_to_download:
+            console.print("[bold green]✓ All documents already downloaded![/bold green]")
+            return
+        
         console.print(f"\n[bold green]✓ Found {len(document_links)} documents[/bold green]")
-        console.print(f"[dim]Downloading with 5 concurrent connections...[/dim]\n")
+        console.print(f"[dim]Downloading {len(documents_to_download)} new documents with 5 concurrent connections...[/dim]\n")
         
         # Step 4: Download documents with progress bar
         semaphore = asyncio.Semaphore(5)
@@ -268,7 +645,7 @@ async def download_100_documents(start_page: int = 6, max_documents: int = 100):
         ) as progress:
             task_id = progress.add_task(
                 "[bold cyan]Downloading documents...",
-                total=len(document_links)
+                total=len(documents_to_download)
             )
             
             # Process all documents concurrently
@@ -276,45 +653,74 @@ async def download_100_documents(start_page: int = 6, max_documents: int = 100):
                 process_single_document(
                     doc_link=doc_link,
                     doc_index=i + 1,
-                    total_docs=len(document_links),
+                    total_docs=len(documents_to_download),
                     output_dir=output_dir,
                     semaphore=semaphore,
                     progress=progress,
                     task_id=task_id
                 )
-                for i, doc_link in enumerate(document_links)
+                for i, doc_link in enumerate(documents_to_download)
             ]
             
             # Wait for all tasks to complete
             results = await asyncio.gather(*tasks)
+            
+            # Add skipped documents to results
+            for doc_id in already_downloaded:
+                results.append({
+                    'document_id': doc_id,
+                    'reg_number': doc_id,
+                    'success': True,
+                    'skipped': True,
+                    'reason': 'already_in_database'
+                })
         
         # Step 5: Save summary
         summary_file = output_dir / "download_summary.json"
         with open(summary_file, 'w', encoding='utf-8') as f:
             json.dump({
                 'total_documents': len(document_links),
+                'already_downloaded': len(already_downloaded),
+                'new_downloads': len(documents_to_download),
                 'successful': sum(1 for r in results if r.get('success')),
                 'failed': sum(1 for r in results if not r.get('success')),
+                'skipped': sum(1 for r in results if r.get('skipped')),
                 'print_versions_saved': sum(1 for r in results if r.get('print_version_saved')),
                 'text_extracted': sum(1 for r in results if r.get('text_extracted')),
+                'db_saved': sum(1 for r in results if r.get('db_saved')),
+                'db_content_records': sum(r.get('db_content_records', 0) for r in results),
+                'metadata_extracted': sum(1 for r in results if r.get('metadata_extracted')),
+                'metadata_updated': sum(1 for r in results if r.get('metadata_updated')),
                 'results': results
             }, f, indent=2, ensure_ascii=False)
         
         # Step 6: Display summary table
-        successful = sum(1 for r in results if r.get('success'))
+        successful = sum(1 for r in results if r.get('success') and not r.get('skipped'))
+        skipped = sum(1 for r in results if r.get('skipped'))
         print_versions = sum(1 for r in results if r.get('print_version_saved'))
         text_extracted = sum(1 for r in results if r.get('text_extracted'))
-        failed = len(document_links) - successful
+        db_saved = sum(1 for r in results if r.get('db_saved'))
+        db_content_records = sum(r.get('db_content_records', 0) for r in results)
+        metadata_extracted = sum(1 for r in results if r.get('metadata_extracted'))
+        metadata_updated = sum(1 for r in results if r.get('metadata_updated'))
+        failed = sum(1 for r in results if not r.get('success'))
         
         summary_table = Table(title="Download Summary", box=box.ROUNDED, show_header=True, header_style="bold cyan")
         summary_table.add_column("Metric", style="cyan", no_wrap=True)
         summary_table.add_column("Value", style="magenta", justify="right")
         
         summary_table.add_row("Total Documents", str(len(document_links)))
+        summary_table.add_row("Already Downloaded", f"[yellow]{len(already_downloaded)}[/yellow]" if already_downloaded else "0")
+        summary_table.add_row("New Downloads", str(len(documents_to_download)))
         summary_table.add_row("Successful", f"[green]{successful}[/green]")
+        summary_table.add_row("Skipped", f"[yellow]{skipped}[/yellow]" if skipped > 0 else "0")
         summary_table.add_row("Failed", f"[red]{failed}[/red]" if failed > 0 else "0")
         summary_table.add_row("Print Versions", str(print_versions))
         summary_table.add_row("Text Extracted", str(text_extracted))
+        summary_table.add_row("Saved to Database", f"[green]{db_saved}[/green]" if db_saved > 0 else "[yellow]0[/yellow]")
+        summary_table.add_row("DB Content Records", str(db_content_records))
+        summary_table.add_row("Metadata Extracted", f"[green]{metadata_extracted}[/green]" if metadata_extracted > 0 else "[yellow]0[/yellow]")
+        summary_table.add_row("Metadata Updated", f"[green]{metadata_updated}[/green]" if metadata_updated > 0 else "[yellow]0[/yellow]")
         
         console.print("\n")
         console.print(summary_table)

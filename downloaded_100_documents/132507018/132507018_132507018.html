@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="uk"><head>
+    <title>Єдиний державний реєстр судових рішень</title>
+    <link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css">
+    <script src="/Scripts/all.min.js" type="text/javascript"></script>
+    <script src="/Scripts/Common.js?1" type="text/javascript"></script>
+    <script src="/Scripts/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.multiSelect.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        #modalcaptcha {
+            background-color: #F5F5F5;
+            border: 2px solid buttonshadow;
+            border-radius: 15px 15px 15px 15px;
+            font-family: "Times New Roman";
+            font-size: 15px;
+            margin: 0;
+            padding: 20px;
+            position: absolute;
+            z-index: 1;
+            display: inline;
+            left: 461.5px;
+            top: 192px;
+        }
+
+            #modalcaptcha button {
+                background-color: #F0F0F0;
+                border: 1px solid #AAAAAA;
+                border-radius: 12px 12px 12px 12px;
+                color: #393939;
+                font-size: 100%;
+                font-weight: bold;
+                height: 30px;
+                margin: 0 0 0 10px;
+                width: 150px;
+            }
+
+            #modalcaptcha .disabled {
+                color: #ddd;
+            }
+    </style>
+
+</head>
+<body style="visibility: visible;">
+    <div class="page">
+        <div id="content">
+            <div id="header" style="margin-bottom: 10px;">
+                <h1 style="display: none;">Єдиний державний реєстр судових рішень</h1>
+                
+                <div class="warningblock">
+                <h4 class="warningtext">Доступ до Реєстру здійснюється в тестовому (обмеженому) режимі. Для запобігання загрозам життю і здоров'ю суддів та учасників судового процесу, а також у разі виявлення ознак кіберзагрози, доступ до Реєстру або окремих рішень у ньому може бути обмежено.</h4>
+                </div>
+                <div id="logon" class="notVisible" style="display: none;">
+                    
+                    Ласкаво просимо, !
+                </div>
+
+                <div id="menucontainer" style="display: none;">
+                    <table id="menu" cellpadding="0" cellspacing="0" style="text-align:center;">
+                        <tbody><tr>
+                            <td style="width: 69px; padding-left: 25px; vertical-align: middle;" class="staticTD">
+                                <img src="/Content/Images/trident2.PNG" title="Державний герб України" alt="Державний герб України" style="display: block">
+                            </td>
+                            <td style="width: 89px">
+                                <a href="/" id="aSearch" name="aSearch">Головна</a>
+                            </td>
+                            <td style="width: 137px">
+                                <a href="/Law" id="aLaw" name="aLaw">Законодавство</a>
+                            </td>
+                            <td style="width: 96px">
+                                <a href="/Contacts" id="aContacts" name="aContacts">Контакти</a>
+                            </td>
+                            <td style="width: 91px">
+                                <a href="/Rules" id="aRules" name="aRules">Правила</a>
+                            </td>
+                            <td style="width: 100px">
+                                <a href="/Help" id="aHelp" name="aHelp">Допомога</a>
+                            </td>
+                            <td style="width: 200px">
+                                <a href="/ChangedNameCourts">Змінені назви судів</a>
+                            </td>
+                            <td style="width: 220px" class="staticTD">
+                            </td>
+                            
+                            <td style="width: 150px">
+
+<a href="/login" id="aLogin" name="aLogin">Повний доступ</a>                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+            <div id="login">
+                
+
+<div id="divdocument" style="height: 934.844px;">
+    <div id="divcasecat">
+        <table style="margin-bottom:10px;border-collapse: collapse; border-spacing: 0;" id="info">
+            <tbody><tr><td colspan="2" style="text-align:left;">Категорія&nbsp;справи № <b><form style="margin: 0; padding: 0; display:inline!important;" id="ree_doc" target="_blank" action="https://reyestr.court.gov.ua" accept-charset="utf-8" method="POST"><div style="display:none;"><input style="display: inline;" name="CaseNumber" value="2-123/82" type="text"><input style="display: inline;" name="PagingInfo.ItemsPerPage" value="25" type="text"><input style="display: inline;" name="Sort" value="1" type="text"></div><a style="display: inline;" id="tooltp" title="Натисніть для перегляду всіх судових рішень по справі" href="#">2-123/82</a></form>: Цивільні справи (з 01.01.2019); Справи позовного провадження; Справи у спорах, що виникають  із сімейних відносин, з них.</b></td></tr>
+            <tr><td colspan="2" style="text-align:left;">Надіслано судом: <b>11.12.2025.</b> Зареєстровано: <b>11.12.2025.</b> Забезпечено надання загального доступу: <b>12.12.2025.</b></td></tr>
+            <tr><td colspan="2" style="text-align:left;">Дата набрання законної сили:&nbsp;<b>09.01.1983</b></td></tr>
+            <tr><td colspan="2" style="text-align:left;">Номер судового провадження: <b>-</b></td></tr>
+        </tbody></table>
+    </div>
+    <div id="divprint">
+        <input type="button" id="btnPrint" name="btnPrint" value="Версія для друку">
+    </div>
+    <iframe id="divframe" name="divframe" style="width: 958px; height: 731px;"></iframe>
+    <textarea id="txtdepository">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//DE" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+		&lt;meta name="generator" content="Rtf2Html Converter" /&gt;
+		&lt;title&gt;
+			Єдиний державний реєстр судових рішень
+		&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+		&lt;p align="right"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;2-123/82&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;РЕШЕНИЕ&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;ИМЕНЕМ&nbsp;УКРАИНСКОЙ&nbsp;СОВЕТСКОЙ&nbsp;СОЦИАЛИСТИЧЕСКОЙ&nbsp;РЕСПУБЛИКИ&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;30&nbsp;декабря&nbsp;1982&nbsp;г.&nbsp;Ракитнянский&nbsp;районный&nbsp;народный&nbsp;суд&nbsp;&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;в&nbsp;составе:&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;председательствующего-народного&nbsp;судьи&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;ОСОБА_1&nbsp;&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;народных&nbsp;заседателей&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;ОСОБА_2&nbsp;,&nbsp;ОСОБА_3&nbsp;.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;При&nbsp;секретаре&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Зуева&nbsp;Н.В.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Адвоката&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Щедрин&nbsp;В.А.,&nbsp;ОСОБА_4&nbsp;.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Рассмотрев&nbsp;в&nbsp;открытом&nbsp;судебном&nbsp;заседании&nbsp;в&nbsp;п.&nbsp;Ракитно&nbsp;дело&nbsp;по&nbsp;иску&nbsp;ОСОБА_5&nbsp;к&nbsp;ОСОБА_6&nbsp;о&nbsp;разделе&nbsp;имущества&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;у&nbsp;с&nbsp;т&nbsp;а&nbsp;н&nbsp;о&nbsp;в&nbsp;и&nbsp;л:&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;4.01.1972&nbsp;г.&nbsp;Стороны&nbsp;зарегистрировали&nbsp;брак.&nbsp;Имеют&nbsp;сына&nbsp;ОСОБА_7&nbsp;ІНФОРМАЦІЯ_1&nbsp;и&nbsp;истица&nbsp;ребенка&nbsp;от&nbsp;первого&nbsp;брака.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;В&nbsp;период&nbsp;брака&nbsp;стороны&nbsp;построили&nbsp;домостроение&nbsp;и&nbsp;приобрели&nbsp;другого&nbsp;имущества&nbsp;на&nbsp;сумму&nbsp;1229&nbsp;руб.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Истица&nbsp;просит&nbsp;суд&nbsp;разделить&nbsp;совместно&nbsp;нажитое&nbsp;имущество.&nbsp;Признать&nbsp;за&nbsp;ней&nbsp;право&nbsp;собственности&nbsp;2/3&nbsp;части&nbsp;домостроения&nbsp;с&nbsp;учетом&nbsp;жилищных&nbsp;интересов&nbsp;несовершеннолетних&nbsp;детей,&nbsp;а&nbsp;также&nbsp;выделить&nbsp;движимого&nbsp;имущества&nbsp;на&nbsp;сумму&nbsp;1851&nbsp;руб.&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;баян,&nbsp;2&nbsp;дивана,&nbsp;2&nbsp;подушки,&nbsp;2&nbsp;одеяла,&nbsp;зеркало,&nbsp;4&nbsp;гардины,&nbsp;покрывала&nbsp;4,&nbsp;3&nbsp;стулья,&nbsp;2&nbsp;люстры,&nbsp;кухонный&nbsp;набор,&nbsp;стиральную&nbsp;машину,&nbsp;ванную&nbsp;80,&nbsp;2&nbsp;письменных&nbsp;стола,&nbsp;газплиту,&nbsp;телевизор,&nbsp;тумбочку,&nbsp;шкаф,&nbsp;газбаллоны,&nbsp;часы&nbsp;настенные.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Ответчик&nbsp;иск&nbsp;признал&nbsp;частично&nbsp;и&nbsp;пояснил,&nbsp;что&nbsp;согласен&nbsp;разделить&nbsp;домостроение&nbsp;по&nbsp;любому&nbsp;варианту&nbsp;технической&nbsp;экспертизы&nbsp;только&nbsp;пополам.&nbsp;Другого&nbsp;имущества&nbsp;не&nbsp;желает&nbsp;получать.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Суд,&nbsp;ознакомившись&nbsp;с&nbsp;материалами&nbsp;дела,&nbsp;выслушав&nbsp;стороны,&nbsp;считает&nbsp;требования&nbsp;истицы&nbsp;обоснованными&nbsp;и&nbsp;подлежащими&nbsp;удовлетворению.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;В&nbsp;судебном&nbsp;заседании&nbsp;было&nbsp;установлено,&nbsp;что&nbsp;стороны&nbsp;в&nbsp;период&nbsp;брака&nbsp;построили&nbsp;домостроение&nbsp;стоимостью&nbsp;9682&nbsp;р.&nbsp;И&nbsp;приобрели&nbsp;имущества&nbsp;на&nbsp;сумму&nbsp;2612&nbsp;р.,&nbsp;баян&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;141,&nbsp;тумбочки&nbsp;2&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;40&nbsp;р.,&nbsp;2&nbsp;письменных&nbsp;стола&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;110&nbsp;р.,&nbsp;лампа&nbsp;настольная&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;7&nbsp;р.,&nbsp;телевизор&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;250&nbsp;р.,&nbsp;шкаф&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;147&nbsp;р,&nbsp;подушки&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;4&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;40&nbsp;р.,&nbsp;одеяла&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;3&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;60&nbsp;р.,&nbsp;зеркало&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;15&nbsp;р.&nbsp;,гардины&nbsp;4&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;100&nbsp;р.,&nbsp;часы&nbsp;настольные&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;30&nbsp;р.,&nbsp;стула&nbsp;3&nbsp;шт.&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;15&nbsp;руб.,&nbsp;две&nbsp;люстры&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;60&nbsp;руб.,&nbsp;кухонный&nbsp;набор&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;259&nbsp;р.,&nbsp;газовую&nbsp;плиту&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;80&nbsp;руб.,&nbsp;балоны&nbsp;газовые&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;40&nbsp;руб.,&nbsp;таганок&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;14&nbsp;р.,&nbsp;стиральную&nbsp;машину&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;110&nbsp;р.,&nbsp;поросята&nbsp;600&nbsp;р.,&nbsp;куры&nbsp;10&nbsp;р.,&nbsp;покрывала&nbsp;40.,&nbsp;ванная&nbsp;80&nbsp;руб.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;В&nbsp;силу&nbsp;закона&nbsp;имущество&nbsp;приобретенное&nbsp;супругами&nbsp;в&nbsp;период&nbsp;брака&nbsp;является&nbsp;их&nbsp;общей&nbsp;совместной&nbsp;собственностью&nbsp;и&nbsp;в&nbsp;случае&nbsp;раздела&nbsp;подлежит&nbsp;пополам.&nbsp;Но&nbsp;в&nbsp;отдельных&nbsp;случаях&nbsp;суд&nbsp;может,&nbsp;учитывая&nbsp;интересы&nbsp;несовершеннолетних&nbsp;детей,&nbsp;отступить&nbsp;от&nbsp;принципа&nbsp;равенства&nbsp;долей.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Так,&nbsp;принимая&nbsp;во&nbsp;внимание,&nbsp;что&nbsp;у&nbsp;истицы&nbsp;двое&nbsp;несовершеннолетних&nbsp;детей&nbsp;суд&nbsp;считая&nbsp;возможным&nbsp;учитывая&nbsp;интересы&nbsp;несовершеннолетних&nbsp;детей,&nbsp;увеличить&nbsp;ее&nbsp;долю&nbsp;в&nbsp;общем&nbsp;имуществе&nbsp;супругов.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Из&nbsp;домостроения&nbsp;истице&nbsp;следует&nbsp;выделить&nbsp;27/50&nbsp;частей&nbsp;домостроения&nbsp;на&nbsp;праве&nbsp;личной&nbsp;собственности,&nbsp;т.е.&nbsp;помещение&nbsp;№1-5,&nbsp;1-6,&nbsp;1-7,&nbsp;хозсарай,&nbsp;погреб&nbsp;и&nbsp;туалет,&nbsp;а&nbsp;ответчику&nbsp;оставить&nbsp;23/50&nbsp;части&nbsp;домостроения&nbsp;помещения&nbsp;1-1,&nbsp;1-2,&nbsp;1-3,&nbsp;1-4,&nbsp;1-8,&nbsp;колодец.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;С&nbsp;движимого&nbsp;имущества&nbsp;истице&nbsp;следует&nbsp;выделить&nbsp;баян&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;141,&nbsp;2&nbsp;дивана&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;294,&nbsp;НОМЕР_1&nbsp;подушки&nbsp;20р.,&nbsp;2&nbsp;одеяла&nbsp;40&nbsp;р.,&nbsp;зеркало&nbsp;15&nbsp;руб.,&nbsp;4&nbsp;гардины&nbsp;100&nbsp;руб.,&nbsp;покрывала&nbsp;40&nbsp;р.,&nbsp;3&nbsp;стулья&nbsp;15&nbsp;р.,&nbsp;2&nbsp;люстры&nbsp;60&nbsp;руб.,&nbsp;кухонный&nbsp;набор&nbsp;259,&nbsp;стиральную&nbsp;машину&nbsp;110р.,&nbsp;ванную&nbsp;-80р.,&nbsp;два&nbsp;письменных&nbsp;стола&nbsp;110&nbsp;р.,&nbsp;газовую&nbsp;плиту&nbsp;-80&nbsp;р.,&nbsp;телевизор&nbsp;250&nbsp;р.,&nbsp;тумбочку&nbsp;20&nbsp;р.,&nbsp;шкаф&nbsp;147,&nbsp;2&nbsp;газовых&nbsp;балона&nbsp;-40&nbsp;р.,&nbsp;часы&nbsp;настенные&nbsp;30&nbsp;р.,&nbsp;а&nbsp;ответчику&nbsp;4&nbsp;покрывала&nbsp;40&nbsp;р.,&nbsp;одеяло&nbsp;30&nbsp;р.,&nbsp;тумбочку&nbsp;20&nbsp;р.,&nbsp;поросята&nbsp;600&nbsp;р.,&nbsp;куры&nbsp;10&nbsp;р.,&nbsp;газтаганок&nbsp;14&nbsp;р.,&nbsp;настольную&nbsp;лампу&nbsp;7&nbsp;р.,&nbsp;две&nbsp;подушки&nbsp;20&nbsp;р.,&nbsp;одеяло&nbsp;20&nbsp;р.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Суд&nbsp;увеличил&nbsp;долю&nbsp;истицы&nbsp;в&nbsp;движимом&nbsp;имуществе&nbsp;с&nbsp;учетом&nbsp;интереса&nbsp;несовершеннолетних&nbsp;детей.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Истицу&nbsp;суд&nbsp;обязывает&nbsp;в&nbsp;срок&nbsp;до&nbsp;1&nbsp;мая&nbsp;1983&nbsp;года&nbsp;заделать&nbsp;дверной&nbsp;проем&nbsp;между&nbsp;помещениями&nbsp;АДРЕСА_1&nbsp;,&nbsp;3&nbsp;и&nbsp;1-5,&nbsp;а&nbsp;также&nbsp;убрать&nbsp;выход&nbsp;в&nbsp;усадьбу&nbsp;с&nbsp;помещения&nbsp;1-5&nbsp;и&nbsp;1-6&nbsp;отгородив&nbsp;его&nbsp;тамбуром.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Ответчик&nbsp;обязан&nbsp;в&nbsp;силу&nbsp;закона&nbsp;нести&nbsp;расходы&nbsp;по&nbsp;проведению&nbsp;технической&nbsp;экспертизы&nbsp;74&nbsp;р.&nbsp;и&nbsp;25&nbsp;р.&nbsp;за&nbsp;окончание&nbsp;юридической&nbsp;помощи.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Руководствуясь&nbsp;ст.&nbsp;ст.&nbsp;22,&nbsp;28,&nbsp;29&nbsp;КОБС&nbsp;УССР,&nbsp;15,&nbsp;30,&nbsp;62,&nbsp;75-76&nbsp;&lt;a href="http://search.ligazakon.ua/l_doc2.nsf/link1/ed_2025_10_31/pravo1/T_179800.html?pravo=1" title="Господарський процесуальний кодекс України; нормативно-правовий акт № 1798-XII від 06.11.1991, ВР України" target="_blank"&gt;ГПК&lt;/a&gt;&nbsp;УССР&nbsp;суд,&nbsp;-&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="center"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;РЕШИЛ:&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Иск&nbsp;ОСОБА_5&nbsp;право&nbsp;собственности&nbsp;27/50&nbsp;частей&nbsp;домостроения,&nbsp;находящегося&nbsp;в&nbsp;пгт.&nbsp;Тараща,&nbsp;ул.&nbsp;Хмельницкого&nbsp;НОМЕР_2&nbsp;и&nbsp;выделить&nbsp;помещения&nbsp;1-5,&nbsp;12.9&nbsp;м2,&nbsp;1270&nbsp;р.,&nbsp;1-6,&nbsp;12.5&nbsp;м2&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;839&nbsp;р.,&nbsp;1-7,&nbsp;11,92&nbsp;м2&nbsp;1280&nbsp;р.,&nbsp;хозсарай,&nbsp;погреб,&nbsp;туалет.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Признать&nbsp;за&nbsp;ОСОБА_6&nbsp;право&nbsp;собственности&nbsp;на&nbsp;23/50&nbsp;части&nbsp;домостроения,&nbsp;находящегося&nbsp;в&nbsp;п.&nbsp;Тараща,&nbsp;Хмельницкого&nbsp;146&nbsp;и&nbsp;выделить&nbsp;помещение&nbsp;1-1,&nbsp;8,6&nbsp;м2&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;648&nbsp;р.,&nbsp;1-2-7,8&nbsp;м2&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;537&nbsp;р.,&nbsp;1-3&nbsp;4,5&nbsp;м2&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;331&nbsp;р.,&nbsp;1-4&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;9&nbsp;м2&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;815&nbsp;р.,&nbsp;1-8&nbsp;19,3&nbsp;м2&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;1469&nbsp;р.,&nbsp;колодец.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Выделить&nbsp;ОСОБА_5&nbsp;баян&nbsp;141&nbsp;р.,&nbsp;2&nbsp;диван-кровать&nbsp;294&nbsp;р.,&nbsp;2&nbsp;подушки&nbsp;20&nbsp;руб.,&nbsp;2&nbsp;одеяла&nbsp;40&nbsp;р.,&nbsp;зеркало&nbsp;15&nbsp;р.,&nbsp;4&nbsp;гардины&nbsp;100&nbsp;р.,&nbsp;4&nbsp;покрывала&nbsp;40&nbsp;р.,&nbsp;3&nbsp;стула&nbsp;15&nbsp;р.,&nbsp;2&nbsp;люстры&nbsp;60&nbsp;р.,&nbsp;кухонный&nbsp;набор&nbsp;259&nbsp;р.,&nbsp;стиральную&nbsp;машину&nbsp;110&nbsp;р.,&nbsp;ванную&nbsp;80&nbsp;р.,&nbsp;2&nbsp;письменных&nbsp;стола&nbsp;110&nbsp;р.,&nbsp;газовую&nbsp;плиту&nbsp;80&nbsp;р.,&nbsp;телевизор&nbsp;250&nbsp;р.,&nbsp;тумбочка&nbsp;20&nbsp;р.,&nbsp;шкаф&nbsp;14&nbsp;р.,&nbsp;2&nbsp;газовых&nbsp;баллона&nbsp;40,&nbsp;часы&nbsp;настольные&nbsp;30&nbsp;р.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Выделить&nbsp;ОСОБА_6&nbsp;4&nbsp;покрывала&nbsp;40&nbsp;р.,&nbsp;одеяло&nbsp;30&nbsp;р.,&nbsp;тумбочку&nbsp;20&nbsp;р.,&nbsp;поросята&nbsp;600&nbsp;р.,&nbsp;куры&nbsp;10&nbsp;р.,&nbsp;таганок&nbsp;14&nbsp;р.,&nbsp;настольную&nbsp;лампу&nbsp;7&nbsp;р.,&nbsp;две&nbsp;подушки&nbsp;20&nbsp;р.,&nbsp;одеяло&nbsp;20&nbsp;р.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Обязать&nbsp;ОСОБА_5&nbsp;в&nbsp;срок&nbsp;до&nbsp;1&nbsp;мая&nbsp;1983&nbsp;года&nbsp;делать&nbsp;дверной&nbsp;проем&nbsp;между&nbsp;помещениями&nbsp;1-3&nbsp;и&nbsp;1-5&nbsp;и&nbsp;устроить&nbsp;выход&nbsp;в&nbsp;усадьбу&nbsp;в&nbsp;помещении&nbsp;1-5&nbsp;и&nbsp;1-6&nbsp;отгородить&nbsp;его&nbsp;тамбуром.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Взыскать&nbsp;с&nbsp;ОСОБА_6&nbsp;в&nbsp;пользу&nbsp;ОСОБА_5&nbsp;99&nbsp;рублей.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Срок&nbsp;обжалования&nbsp;решения&nbsp;в&nbsp;Киевский&nbsp;облсуд&nbsp;в&nbsp;течении&nbsp;десяти&nbsp;суток&nbsp;через&nbsp;Ракитнянский&nbsp;райнарсуд.&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;НАРСУДЬЯ&lt;/span&gt;&lt;/p&gt;
+		&lt;p align="justify"&gt;&lt;span style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;&nbsp;&lt;/span&gt;&lt;span align="justify" style="background-color:#FFFFFF;font-family:Times New Roman CYR;font-size:12pt;"&gt;Народные&nbsp;заседатели&lt;/span&gt;&lt;/p&gt;
+		&lt;p&gt;&nbsp;&lt;/p&gt;
+
+	&lt;/body&gt;
+&lt;/html&gt;</textarea>
+</div>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(document).ready(function () {
+            $('h1').css('display', 'none');
+            $('#logon').css('display', 'none');
+            $('#menucontainer').css('display', 'none');
+            $('#header').css('margin-bottom', '10px');
+            function windowResize() {
+                var el = $('#divdocument');
+                el.height($(window).height() - 1 - el.offset().top - el.outerHeight(true) + el.height());
+                var el = $('#divframe');
+                el.width($('#divdocument').width() - el.outerWidth(true) + el.width());
+                el.height($('#divdocument').height() - $('#divcasecat').outerHeight(true) - $('#divprint').outerHeight() - el.outerHeight(true) + el.height());
+            }
+            windowResize();
+            $(window).resize(function () {
+                windowResize();
+            });
+
+            var el = $('#txtdepository');
+            var src = el.text();
+            var txt = '';
+            var pos = 0;
+            var step = 32766;
+            while (pos < src.length) {
+                el.text(src.substr(pos, step));
+                pos += step;
+                txt = txt + el.html();
+            }
+            txt = txt.replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/color/gi, "tag1").replace(/font-family/gi, "tag2").replace(/font-size/gi, "tag3").replace(/line-height/gi, "tag4").replace(/text-indent/gi, "tag5").replace(/margin/gi, "tag6").replace(/padding/gi, "tag7");
+
+            var s1 = "&nbsp;";
+            var s2 = s1 + s1;
+            var ix = 0;
+            var ix2 = 0;
+            while (ix < txt.length && (ix2 = txt.indexOf(s1, ix)) >= 0) {
+                if (ix2 == txt.indexOf(s2, ix)) {
+                    ix = ix2 + s2.length;
+                } else {
+                    txt = txt.substr(0, ix2) + " " + txt.substr(ix2 + s1.length);
+                    ix = ix2;
+                }
+            }
+
+            divframe.document.open();
+            divframe.document.write(txt);
+            divframe.document.close();
+            $('#divframe').contents().find('head').each(function () {
+                try {
+                    // Для версій ІЕ <= 8 код не працює, тому ставимо обгорточку try
+                    $(this).find('title').html($('html').find('title').html());
+                } catch (e) { }
+                $(this).html('<link rel="shortcut icon" href="/Content/Images/favicon.ico" type="image/x-icon" />' + $(this).html());
+            }).parent('html').find('body').each(function () {
+                $(this).css('margin', '0').css('padding', '10px');
+                $(this).find('img').remove();
+                $(this).html('<div style="display: block; text-align: center"><img /></div>' + $(this).html());
+                $(this).find('img').attr('src', '/Content/Images/rada.gif').attr('title', 'Державний герб України').attr('alt', 'Державний герб України');
+            });
+            $('a#tooltp').click(function () {
+                $('form#ree_doc').submit();
+            });
+            $('#btnPrint').click(function () {
+                $('#divframe').contents().find('html').prepend('<hr />');
+                $('#divframe').contents().find('html').prepend($('div#divcasecat').html());
+                document.write($('#divframe').contents().find('html').html());
+                document.close();
+                $('a:link').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+                $('a:visited').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+                $('a:hover').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+                $('a:active').css({
+                    "color": "black",
+                    "text-decoration": "none",
+                    "cursor": "text"
+                });
+            });
+        });
+    });
+</script>
+            </div>
+            <div id="init">
+                <!--div class="init-caption">
+                    Введіть, будь ласка, логін та пароль
+                </div-->
+                <div class="init-log">
+                    <a>Логін:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="initLog" type="text">
+                </div>
+                <div class="init-pass">
+                    <a>Пароль:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="initPass" type="password">
+                </div>
+                <div class="init-submit">
+                    <input id="initOk" type="button" value="Вхід">
+                    <input id="initCancel" type="button" value="Відмова">
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+
+		    function Btn_search_click() {
+		        if ((!$('#logon').hasClass('notVisible')) || ('1' == '1'))
+                {
+		            $('#login > form').submit();
+		            blockPage();
+		        }
+                else
+                {
+		            $('#backImage2').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+		            $('#modalcaptcha').show();
+		        }
+
+		        var fNumber = Math.floor(Math.random() * 11);
+
+		        if (fNumber == 0) {
+		            fNumber = 1;
+		        }
+
+		        var sNumber = Math.floor(Math.random() * 11);
+		        var captcha = "Вкажіть правильний результат " + fNumber + "+" + sNumber + " ";
+
+		        var summ = fNumber + sNumber;
+
+
+		        var width = parseInt($(document).width() / 2);
+		        var height = parseInt($(document).height() / 2);
+
+		        $('#modalcaptcha').css({
+		            top: 300,
+		            left: width - parseInt($('#modalcaptcha').width() / 2)
+		        });
+
+		        return false;
+		    }
+
+		    $(document).ready(function () {
+
+		       // $('#btn').click(Btn_search_click);
+
+
+
+		        $('#modalcaptcha .searchcapchaclose').click(function () {
+		            $('#modalcaptcha').hide();
+		        });
+
+		    });
+
+            </script>
+
+            <div id="modalcaptcha" style="display: none;">
+                <p style="width: 355px; text-align: justify;">З метою упередження перешкоджанню стабільній роботі Реєстру шляхом здійснення автоматичних або автоматизованих запитів на пошук та копіювання ("викачування") бази даних, запроваджено інтерактивний елемент захисту системи</p>
+
+                <div id="captchablock">
+                    <a id="captchaQuery">Введіть cуму цифр, зображених на малюнку:</a><br>
+
+                    <input id="backWord2" type="text"><br>
+                    <img id="backImage2" alt="">
+                </div>
+                <div>
+                    <button type="button" class="searchbtn">Перевірити</button>
+                    <button type="button" class="searchcapchaclose">Закрити</button>
+                </div>
+            </div>
+            <div id="back">
+                <div class="back-name">
+                    <a>Ваше ім'я:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backName" type="text" class="backName">
+                </div>
+                <div class="back-mail">
+                    <a>Ваш e-mail:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backMail" type="text" class="backMail">
+                </div>
+                <div class="back-message">
+                    <a>Повідомлення:</a><br>
+                    <a>Для помилки:</a><br>
+                    <textarea id="backMessage" class="backMessage" cols="0" rows="0"></textarea>
+                </div>
+                <div class="back-word">
+                    <a>Введіть в поле результат арифметичного виразу:</a><br>
+                    <a>Для помилки:</a><br>
+                    <input id="backWord" type="text" class="backWord"><br>
+                    <img id="backImage" class="backImage" alt="" title="Клікніть, щоб оновити малюнок!
+Залишилось 10 спроб!">
+                </div>
+                <div class="back-submit">
+                    <input id="backOk" type="button" class="backOk" value="Відправити">
+                    <input id="backCancel" type="button" class="backCancel" value="Скасувати">
+                </div>
+            </div>
+            <div id="block">
+                Зачекайте, будь ласка...
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        startURL = function () {
+            var url = document.URL;
+            var url_1 = url.substr(0, url.indexOf('//') + 2);
+            var url_2 = url.substr(url.indexOf('//') + 2);
+            url = url_1 + url_2.substr(0, url_2.indexOf('/') + 1);
+            return url;
+        }
+        
+        $(document).ready(function () {
+            $('#aLoginOut').click(function () {
+                if ($(this).find('label').length == 0) {
+                    $.ajax({
+                        url: startURL() + "Account/LogOff",
+                        cache: false,
+                        data: {
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data, statusLine) {
+                            $.each(data, function (i, rec) {
+                                if (rec.key == 'success') {
+                                    $('#logon').addClass('notVisible');
+                                    $('#aLoginOut').html('Повний доступ');
+                                    $('#tableLiga').removeClass('notVisible');
+                                    if ($('#Liga').val() == 'true') $('#divProviderLinks').removeAttr('style');
+                                    console.log(res, "res")
+                                    console.log(i,"i")
+                                }
+                                if (rec.key == 'error') {
+                                    alert(rec.mes);
+                                }
+                            });
+                        },
+                        error: function (e) {
+                            alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                        }
+                    });
+                    return;
+                }
+            });
+            $('#fullAccess').click(function () {
+                if ($(this).find('label').length > 0) {
+                    $.ajax({
+                        url: startURL() + "Account/LogOff",
+                        cache: false,
+                        data: {
+                        },
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data, statusLine) {
+                            $.each(data, function (i, rec) {
+                                if (rec.key == 'success') {
+                                    $('#logon').addClass('notVisible');
+                                    $('#fullAccess').html('Повний доступ');
+                                    $('#tableLiga').removeClass('notVisible');
+                                    if ($('#Liga').val() == 'true') $('#divProviderLinks').removeAttr('style');
+                                }
+                                if (rec.key == 'error') {
+                                    alert(rec.mes);
+                                }
+                            });
+                        },
+                        error: function (e) {
+                            alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                        }
+                    });
+                    return;
+                }
+                //var fr = $('#init');
+                //fr.find('input:text, input:password').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                //fr.css('display', 'inline');
+                //fr.css('left', ($(window).width() - fr.outerWidth()) / 2);
+                //fr.css('top', $(window).scrollTop() + ($(window).height() - fr.outerHeight()) / 2);
+                //fr.find('input:first').focus();
+            });
+
+            $('#init').find('input:password').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $('#initOk').click();
+                }
+            });
+
+            $('#initOk').click(function () {
+                var fr = $('#init');
+                fr.find('input:text, input:password').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                var _initLog = $('#initLog').val();
+                var _initPass = Sha256.hash($('#initPass').val());
+                $.ajax({
+                    url: startURL() + "Account/LoginForm",
+                    cache: false,
+                    data: {
+                        username: _initLog,
+                        password: _initPass
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        $.each(data, function (i, rec) {
+                            if (rec.key == 'success') {
+                                if (rec.mes == '') rec.mes = _initLog;
+                                $('#logon').removeClass('notVisible').text('Ласкаво просимо, ' + rec.mes + '!');
+                                $('#fullAccess').html('<label>Вихід</label>');
+                                $('#tableLiga').addClass('notVisible');
+                                $('#divProviderLinks').attr('style', 'display: none');
+
+                                fr.css('display', 'none');
+                            }
+                            if (rec.key == 'error' && rec.mes == 'log/pass') {
+                                $('#initLog').prev().removeClass('notVisible').prev().removeClass('notVisible').text('Перевірте логін:').prev().addClass('notVisible').prev().addClass('notVisible');
+                                $('#initPass').prev().removeClass('notVisible').prev().removeClass('notVisible').text('Перевірте пароль:').prev().addClass('notVisible').prev().addClass('notVisible');
+                                $('#initLog').focus();
+                            }
+                            if (rec.key == 'error' && rec.mes != 'log/pass') {
+                                alert(key.mes);
+                            }
+                        });
+                    },
+                    error: function (e) {
+                        alert('Виникла непередбачувана та неконтрольована помилка [' + e.Message + ']!');
+                    }
+                });
+                //fr.css('display', 'none');
+            });
+
+            $('#initCancel').click(function () {
+                var fr = $('#init');
+                fr.css('display', 'none');
+            });
+
+            $('#aRemarks').click(function () {
+                backClick();
+            });
+
+            $('#backConnection').click(function () {
+                backClick();
+            });
+
+            function backClick() {
+                var fr = $('#back');
+                $('#backImage').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+                fr.find('input:text').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.find('textarea').val('').prev().addClass('notVisible').prev().addClass('notVisible').addClass('redColor').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.css('display', 'inline');
+                fr.css('left', ($(window).width() - fr.outerWidth()) / 2);
+                fr.css('top', $(window).scrollTop() + ($(window).height() - fr.outerHeight()) / 2);
+                fr.find('input:first').focus();
+            }
+            function CaptchaTestClick()
+            {
+
+                var _backWord = $('#backWord2').val();
+                $.ajax({
+                    url: startURL() + "Contact/Send",
+                    cache: false,
+                    data: {
+                        backWord: _backWord
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        var suc = 0;
+                        var err = '';
+                        var inp;
+
+                        $.each(data, function (i, rec) {
+                            if (rec.key == "backWord") {
+                                suc = 1;
+                            }
+
+                        });
+
+                        if (suc == 0) {
+
+                            $('#login > form').submit();
+                            blockPage();
+                        }
+                        else {
+                            $('#backImage2').attr('src', '/Image?id=' + (new Date()).getTime().toString());
+                            $('#backWord2').val('');
+                            $("#captchaQuery").css('color', 'red');
+                        }
+                    },
+                    error: function () {
+                        alert('Виникла непередбачувана та неконтрольована помилка!');
+                    }
+                });
+                //fr.css('display', 'none');
+            }
+
+            $('#backWord2').keypress(function (e) {
+                var k = e.keyCode || e.which;
+                if (k == 13) {
+                    CaptchaTestClick();
+                    return false;
+                }
+            });
+
+            $('#modalcaptcha .searchbtn').click(CaptchaTestClick);
+
+
+            $('#backOk').click(function () {
+                var fr = $('#back');
+                fr.find('input:text').prev().addClass('notVisible').prev().addClass('notVisible').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                fr.find('textarea').prev().addClass('notVisible').prev().addClass('notVisible').prev().removeClass('notVisible').prev().removeClass('notVisible');
+                var _backName = $('#backName').val();
+                var _backMail = $('#backMail').val();
+                var _backMessage = $('#backMessage').val();
+                var _backWord = $('#backWord').val();
+                $.ajax({
+                    url: startURL() + "Contact/Send",
+                    cache: false,
+                    data: {
+                        backName: _backName,
+                        backMail: _backMail,
+                        backMessage: _backMessage,
+                        backWord: _backWord
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data, statusLine) {
+                        var suc = '';
+                        var err = '';
+                        var inp;
+                        $.each(data, function (i, rec) {
+                            if (rec.key == 'success') {
+                                suc = rec.mes;
+                            }
+                            if (rec.key == 'error') {
+                                err = rec.mes;
+                            }
+                            if (rec.key == 'backName') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Поле для імені не може бути порожнім:");
+                                } else if (rec.mes == 'Small') {
+                                    inp.text("Поле для імені має бути змістовним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backMail') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Поле для e-mail не може бути порожнім:");
+                                } else if (rec.mes == 'Incorrect') {
+                                    inp.text("Поле для e-mail має бути коректним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backMessage') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Повідомлення не може бути порожнім:");
+                                } else if (rec.mes == 'Small') {
+                                    inp.text("Повідомлення має бути змістовним:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                            if (rec.key == 'backWord') {
+                                inp = $('#' + rec.key).prev().removeClass('notVisible').prev().removeClass('notVisible');
+                                if (rec.mes == 'Empty') {
+                                    inp.text("Введіть в поле результат арифметичного виразу:");
+                                } else if (rec.mes == 'Incorrect') {
+                                    inp.text("Невірні символи, спробуйте ще раз:");
+                                }
+                                inp.prev().addClass('notVisible').prev().addClass('notVisible');
+                            }
+                        });
+                        if (suc != '') {
+                            fr.css('display', 'none');
+                            alert(suc);
+                        }
+                        if (err != '') {
+                            alert(err);
+                        }
+                    },
+                    error: function () {
+                        alert('Виникла непередбачувана та неконтрольована помилка!');
+                    }
+                });
+                //fr.css('display', 'none');
+            });
+
+            $('#backCancel').click(function () {
+                var fr = $('#back');
+                fr.css('display', 'none');
+            });
+
+            var bic = 10;
+            var cic = (new Date()).getTime();
+            var nr = String.fromCharCode(13) + String.fromCharCode(10);
+            $('#backImage').attr('title', 'Клікніть, щоб оновити малюнок!' + nr + 'Залишилось 10 спроб!');
+            $('#backImage').click(function () {
+                if (((new Date()).getTime() - cic) < 1000) { return; } else { cic = (new Date()).getTime(); }
+                --bic;
+                if (bic >= 0) $('#backImage').attr('src', '/Image?id=' + (new Date()).getTime().toString()).attr('title', (bic == 0) ? 'Ви використали усі спроби!' : ('Клікніть, щоб оновити малюнок!' + nr + 'Залишил' + ((bic == 1) ? 'а' : 'о') + 'сь ' + bic + ' ' + ((bic > 4) ? 'спроб' : ((bic == 1) ? 'спроба' : 'спроби')) + '!'));
+            });
+
+            $('body').css('visibility', 'visible');
+        });
+    });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript">
+    var gaJsHost = "https://www.";
+    document.write(unescape("%3Cscript src='" + gaJsHost + "googletagmanager.com/gtag/js?id=G-D5XE2RC1LW' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="https://www.googletagmanager.com/gtag/js?id=G-D5XE2RC1LW" type="text/javascript"></script>
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-D5XE2RC1LW');
+</script>
+
+<!--script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script!-->
+<!--script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-33842633-1");
+        pageTracker._trackPageview();
+    } catch (err) { }
+</script!-->
+
+</body></html>

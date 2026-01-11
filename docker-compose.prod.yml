@@ -1,0 +1,129 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: reyestr_db
+    environment:
+      POSTGRES_USER: ${DB_USER:-reyestr_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-reyestr_password}
+      POSTGRES_DB: ${DB_NAME:-reyestr_db}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-reyestr_user} -d ${DB_NAME:-reyestr_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - reyestr_network
+    # Don't expose port externally in production
+    # ports:
+    #   - "5433:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: reyestr_redis
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - reyestr_network
+    # Don't expose port externally in production
+    # ports:
+    #   - "6379:6379"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: reyestr_api
+    environment:
+      # Database
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-reyestr_db}
+      DB_USER: ${DB_USER:-reyestr_user}
+      DB_PASSWORD: ${DB_PASSWORD:-reyestr_password}
+      DB_POOL_MINCONN: ${DB_POOL_MINCONN:-10}
+      DB_POOL_MAXCONN: ${DB_POOL_MAXCONN:-250}
+      
+      # API Server
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_DB: ${REDIS_DB:-0}
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      CACHE_ENABLED: ${CACHE_ENABLED:-true}
+      CACHE_TTL_TASKS: ${CACHE_TTL_TASKS:-10}
+      CACHE_TTL_STATISTICS: ${CACHE_TTL_STATISTICS:-30}
+      CACHE_TTL_DOCUMENTS: ${CACHE_TTL_DOCUMENTS:-60}
+      
+      # Security
+      ENABLE_AUTH: ${ENABLE_AUTH:-true}
+      
+      # Task Management
+      TASK_TIMEOUT_SECONDS: ${TASK_TIMEOUT_SECONDS:-3600}
+      HEARTBEAT_INTERVAL_SECONDS: ${HEARTBEAT_INTERVAL_SECONDS:-60}
+      MAX_TASKS_PER_CLIENT: ${MAX_TASKS_PER_CLIENT:-5}
+      
+      # Telegram (optional)
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+    volumes:
+      - ./logs:/app/logs
+      - ./backups:/app/backups
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 40s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - reyestr_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: reyestr_nginx
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_HTTPS_PORT:-443}:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - reyestr_network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  reyestr_network:
+    driver: bridge
